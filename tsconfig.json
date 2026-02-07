@@ -12,7 +12,10 @@
       "@/shared/*": ["./src/shared/*"],
       "@/entities/*": ["./src/entities/*"],
       "@/features/*": ["./src/features/*"],
-      "@/widgets/*": ["./src/widgets/*"]
+      "@/widgets/*": ["./src/widgets/*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/layouts/*": ["./src/layouts/*"]
     }
   }
 }
