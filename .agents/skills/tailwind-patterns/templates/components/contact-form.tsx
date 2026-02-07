@@ -8,19 +8,19 @@
  *   <ContactForm onSubmit={handleSubmit} />
  */
 
-'use client'
+'use client';
 
-import { useState } from 'react'
+import { useState } from 'react';
 
 interface ContactFormProps {
-  onSubmit?: (data: ContactFormData) => Promise<void> | void
+  onSubmit?: (data: ContactFormData) => Promise<void> | void;
 }
 
 interface ContactFormData {
-  name: string
-  email: string
-  subject: string
-  message: string
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
 }
 
 export function ContactForm({ onSubmit }: ContactFormProps) {
@@ -29,86 +29,86 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
     email: '',
     subject: '',
     message: '',
-  })
-  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({})
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  });
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
     if (errors[name as keyof ContactFormData]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }))
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
-  }
+  };
 
   const validate = (): boolean => {
-    const newErrors: Partial<Record<keyof ContactFormData, string>> = {}
+    const newErrors: Partial<Record<keyof ContactFormData, string>> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required'
+      newErrors.name = 'Name is required';
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required'
+      newErrors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email'
+      newErrors.email = 'Please enter a valid email';
     }
 
     if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required'
+      newErrors.subject = 'Subject is required';
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required'
+      newErrors.message = 'Message is required';
     } else if (formData.message.length < 10) {
-      newErrors.message = 'Message must be at least 10 characters'
+      newErrors.message = 'Message must be at least 10 characters';
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!validate()) return
+    if (!validate()) return;
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     try {
-      await onSubmit?.(formData)
-      setIsSuccess(true)
-      setFormData({ name: '', email: '', subject: '', message: '' })
+      await onSubmit?.(formData);
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      console.error('Form submission error:', error)
+      console.error('Form submission error:', error);
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   if (isSuccess) {
     return (
-      <div className="max-w-md mx-auto bg-success/10 border border-success rounded-lg p-8 text-center">
-        <svg className="h-12 w-12 text-success mx-auto mb-4">✓</svg>
-        <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
-        <p className="text-muted-foreground mb-4">
+      <div className="bg-success/10 border-success mx-auto max-w-md rounded-lg border p-8 text-center">
+        <svg className="text-success mx-auto mb-4 h-12 w-12">✓</svg>
+        <h3 className="mb-2 text-xl font-semibold">Message Sent!</h3>
+        <p className="mb-4 text-muted-foreground">
           Thank you for contacting us. We'll get back to you soon.
         </p>
         <button
           onClick={() => setIsSuccess(false)}
-          className="text-primary hover:underline underline-offset-4"
+          className="text-primary underline-offset-4 hover:underline"
         >
           Send another message
         </button>
       </div>
-    )
+    );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6">
+    <form onSubmit={handleSubmit} className="mx-auto max-w-md space-y-6">
       {/* Name */}
       <div className="space-y-2">
         <label htmlFor="name" className="text-sm font-medium">
@@ -120,7 +120,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
           type="text"
           value={formData.name}
           onChange={handleChange}
-          className={`w-full px-3 py-2 bg-background border rounded-md focus:outline-none focus:ring-2 ${
+          className={`w-full rounded-md border bg-background px-3 py-2 focus:outline-none focus:ring-2 ${
             errors.name
               ? 'border-destructive focus:ring-destructive'
               : 'border-border focus:ring-primary'
@@ -147,7 +147,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
           type="email"
           value={formData.email}
           onChange={handleChange}
-          className={`w-full px-3 py-2 bg-background border rounded-md focus:outline-none focus:ring-2 ${
+          className={`w-full rounded-md border bg-background px-3 py-2 focus:outline-none focus:ring-2 ${
             errors.email
               ? 'border-destructive focus:ring-destructive'
               : 'border-border focus:ring-primary'
@@ -173,7 +173,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
           name="subject"
           value={formData.subject}
           onChange={handleChange}
-          className={`w-full px-3 py-2 bg-background border rounded-md focus:outline-none focus:ring-2 ${
+          className={`w-full rounded-md border bg-background px-3 py-2 focus:outline-none focus:ring-2 ${
             errors.subject
               ? 'border-destructive focus:ring-destructive'
               : 'border-border focus:ring-primary'
@@ -205,7 +205,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
           value={formData.message}
           onChange={handleChange}
           rows={5}
-          className={`w-full px-3 py-2 bg-background border rounded-md focus:outline-none focus:ring-2 resize-y ${
+          className={`w-full resize-y rounded-md border bg-background px-3 py-2 focus:outline-none focus:ring-2 ${
             errors.message
               ? 'border-destructive focus:ring-destructive'
               : 'border-border focus:ring-primary'
@@ -219,16 +219,14 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
             {errors.message}
           </p>
         )}
-        <p className="text-xs text-muted-foreground">
-          {formData.message.length}/500 characters
-        </p>
+        <p className="text-xs text-muted-foreground">{formData.message.length}/500 characters</p>
       </div>
 
       {/* Submit Button */}
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-primary text-primary-foreground px-4 py-3 rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="hover:bg-primary/90 flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-3 text-primary-foreground transition-colors disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isSubmitting ? (
           <>
@@ -240,7 +238,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
         )}
       </button>
 
-      <p className="text-xs text-muted-foreground text-center">
+      <p className="text-center text-xs text-muted-foreground">
         By submitting this form, you agree to our{' '}
         <a href="/privacy" className="text-primary hover:underline">
           privacy policy
@@ -248,7 +246,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
         .
       </p>
     </form>
-  )
+  );
 }
 
 /**

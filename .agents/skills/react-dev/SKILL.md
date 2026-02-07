@@ -82,9 +82,9 @@ function Button({ variant, children, ...props }: ButtonProps) {
 
 ```typescript
 type Props = {
-  children: React.ReactNode;          // Anything renderable
-  icon: React.ReactElement;           // Single element
-  render: (data: T) => React.ReactNode;  // Render prop
+  children: React.ReactNode; // Anything renderable
+  icon: React.ReactElement; // Single element
+  render: (data: T) => React.ReactNode; // Render prop
 };
 ```
 
@@ -148,21 +148,21 @@ const [status, setStatus] = useState<'idle' | 'loading'>('idle');
 **useRef** - null for DOM, value for mutable:
 
 ```typescript
-const inputRef = useRef<HTMLInputElement>(null);  // DOM - use ?.
-const countRef = useRef<number>(0);               // Mutable - direct access
+const inputRef = useRef<HTMLInputElement>(null); // DOM - use ?.
+const countRef = useRef<number>(0); // Mutable - direct access
 ```
 
 **useReducer** - discriminated unions for actions:
 
 ```typescript
-type Action =
-  | { type: 'increment' }
-  | { type: 'set'; payload: number };
+type Action = { type: 'increment' } | { type: 'set'; payload: number };
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
-    case 'set': return { ...state, count: action.payload };
-    default: return state;
+    case 'set':
+      return { ...state, count: action.payload };
+    default:
+      return state;
   }
 }
 ```
@@ -172,7 +172,7 @@ function reducer(state: State, action: Action): State {
 ```typescript
 function useToggle(initial = false) {
   const [value, setValue] = useState(initial);
-  const toggle = () => setValue(v => !v);
+  const toggle = () => setValue((v) => !v);
   return [value, toggle] as const;
 }
 ```
@@ -358,6 +358,7 @@ See [tanstack-router.md](references/tanstack-router.md) for TanStack patterns an
 <rules>
 
 ALWAYS:
+
 - Specific event types (MouseEvent, ChangeEvent, etc)
 - Explicit useState for unions/null
 - ComponentPropsWithoutRef for native element extension
@@ -368,6 +369,7 @@ ALWAYS:
 - Type-safe routing patterns (see routing section)
 
 NEVER:
+
 - any for event handlers
 - JSX.Element for children (use ReactNode)
 - forwardRef in React 19+

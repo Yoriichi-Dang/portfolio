@@ -1,24 +1,23 @@
-import { motion } from "framer-motion";
-import type { HTMLMotionProps } from "framer-motion";
+import { motion } from 'framer-motion';
+import type { HTMLMotionProps } from 'framer-motion';
+import type { ReactNode } from 'react';
 
-interface AnimatedButtonProps
-  extends Omit<HTMLMotionProps<"button">, "children"> {
-  children: React.ReactNode;
-  variant?: "primary" | "secondary" | "outline";
+interface AnimatedButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
+  children: ReactNode;
+  variant?: 'primary' | 'secondary' | 'outline';
 }
 
 export function AnimatedButton({
   children,
-  variant = "primary",
-  className = "",
+  variant = 'primary',
+  className = '',
   ...props
 }: AnimatedButtonProps) {
   const variants = {
-    primary:
-      "bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-dark)]",
-    secondary: "bg-gray-600 text-white hover:bg-gray-700",
+    primary: 'bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-dark)]',
+    secondary: 'bg-gray-600 text-white hover:bg-gray-700',
     outline:
-      "border-2 border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white",
+      'border-2 border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white',
   };
 
   return (
@@ -26,7 +25,7 @@ export function AnimatedButton({
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       transition={{
-        type: "spring",
+        type: 'spring',
         stiffness: 400,
         damping: 17,
       }}

@@ -57,7 +57,7 @@ src/content/blog/
 ```typescript
 // src/pages/blog/[slug].astro
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog');
 
   return posts.map((post) => ({
     params: { slug: post.id }, // post.id = file name
@@ -147,8 +147,8 @@ export async function getStaticPaths() {
   const posts = await getCollection('blog');
 
   return posts.map((post) => ({
-    params: { slug: post.id },     // File name = slug
-    props: post,                    // Pass post data
+    params: { slug: post.id }, // File name = slug
+    props: post, // Pass post data
   }));
 }
 
@@ -272,9 +272,7 @@ const { Content } = await render(post);
 <h1>{post.data.title}</h1>
 <time>{post.data.pubDate}</time>
 
-{post.data.heroImage && (
-  <img src={post.data.heroImage} alt={post.data.title} />
-)}
+{post.data.heroImage && <img src={post.data.heroImage} alt={post.data.title} />}
 
 <Content />
 ```
@@ -378,7 +376,7 @@ Then update `[slug].astro`:
 
 ```typescript
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog');
 
   return posts.map((post) => ({
     params: {

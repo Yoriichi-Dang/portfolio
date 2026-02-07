@@ -13,21 +13,21 @@ function BadUserProfile({ userId }) {
   const { data: user } = useQuery({
     queryKey: ['users', userId],
     queryFn: () => fetchUser(userId),
-  })
+  });
 
   // Waits for user ⏳
   const { data: posts } = useQuery({
     queryKey: ['posts', user?.id],
     queryFn: () => fetchPosts(user!.id),
     enabled: !!user,
-  })
+  });
 
   // Waits for posts ⏳⏳
   const { data: comments } = useQuery({
     queryKey: ['comments', posts?.[0]?.id],
     queryFn: () => fetchComments(posts![0].id),
     enabled: !!posts && posts.length > 0,
-  })
+  });
 }
 ```
 
@@ -39,17 +39,17 @@ function GoodUserProfile({ userId }) {
   const { data: user } = useQuery({
     queryKey: ['users', userId],
     queryFn: () => fetchUser(userId),
-  })
+  });
 
   const { data: posts } = useQuery({
     queryKey: ['posts', userId], // Use userId, not user.id
     queryFn: () => fetchPosts(userId),
-  })
+  });
 
   const { data: comments } = useQuery({
     queryKey: ['comments', userId],
     queryFn: () => fetchUserComments(userId),
-  })
+  });
 }
 ```
 
@@ -61,29 +61,27 @@ function GoodUserProfile({ userId }) {
 
 ```tsx
 // Global
-['todos'] // All todos
-['todos', { status: 'done' }] // Filtered todos
-['todos', 123] // Single todo
+['todos'][('todos', { status: 'done' })][('todos', 123)]; // All todos // Filtered todos // Single todo
 
 // Invalidation hierarchy
-queryClient.invalidateQueries({ queryKey: ['todos'] }) // Invalidates ALL todos
-queryClient.invalidateQueries({ queryKey: ['todos', { status: 'done' }] }) // Only filtered
+queryClient.invalidateQueries({ queryKey: ['todos'] }); // Invalidates ALL todos
+queryClient.invalidateQueries({ queryKey: ['todos', { status: 'done' }] }); // Only filtered
 ```
 
 ### Best Practices
 
 ```tsx
 // ✅ Good: Stable, serializable keys
-['users', userId, { sort: 'name', filter: 'active' }]
-
-// ❌ Bad: Functions in keys (not serializable)
-['users', () => userId]
-
-// ❌ Bad: Changing order
-['users', { filter: 'active', sort: 'name' }] // Different key!
+['users', userId, { sort: 'name', filter: 'active' }][
+  // ❌ Bad: Functions in keys (not serializable)
+  ('users', () => userId)
+][
+  // ❌ Bad: Changing order
+  ('users', { filter: 'active', sort: 'name' })
+]; // Different key!
 
 // ✅ Good: Consistent ordering
-const userFilters = { filter: 'active', sort: 'name' }
+const userFilters = { filter: 'active', sort: 'name' };
 ```
 
 ---
@@ -99,16 +97,16 @@ const userFilters = { filter: 'active', sort: 'name' }
  */
 
 // Real-time data
-staleTime: 0 // Always stale, refetch frequently
-gcTime: 1000 * 60 * 5 // 5 min in cache
+staleTime: 0; // Always stale, refetch frequently
+gcTime: 1000 * 60 * 5; // 5 min in cache
 
 // Stable data
-staleTime: 1000 * 60 * 60 // 1 hour fresh
-gcTime: 1000 * 60 * 60 * 24 // 24 hours in cache
+staleTime: 1000 * 60 * 60; // 1 hour fresh
+gcTime: 1000 * 60 * 60 * 24; // 24 hours in cache
 
 // Static data
-staleTime: Infinity // Never stale
-gcTime: Infinity // Never garbage collect
+staleTime: Infinity; // Never stale
+gcTime: Infinity; // Never garbage collect
 ```
 
 ### Per-Query vs Global
@@ -122,7 +120,7 @@ const queryClient = new QueryClient({
       gcTime: 1000 * 60 * 60,
     },
   },
-})
+});
 
 // Override per query
 useQuery({
@@ -130,7 +128,7 @@ useQuery({
   queryFn: fetchStockPrice,
   staleTime: 0, // Override: always stale
   refetchInterval: 1000 * 30, // Refetch every 30s
-})
+});
 ```
 
 ---
@@ -143,16 +141,16 @@ export const todosQueryOptions = queryOptions({
   queryKey: ['todos'],
   queryFn: fetchTodos,
   staleTime: 1000 * 60,
-})
+});
 
 // Use everywhere
-useQuery(todosQueryOptions)
-useSuspenseQuery(todosQueryOptions)
-queryClient.prefetchQuery(todosQueryOptions)
+useQuery(todosQueryOptions);
+useSuspenseQuery(todosQueryOptions);
+queryClient.prefetchQuery(todosQueryOptions);
 
 // ❌ Bad: Duplicated configuration
-useQuery({ queryKey: ['todos'], queryFn: fetchTodos })
-useSuspenseQuery({ queryKey: ['todos'], queryFn: fetchTodos })
+useQuery({ queryKey: ['todos'], queryFn: fetchTodos });
+useSuspenseQuery({ queryKey: ['todos'], queryFn: fetchTodos });
 ```
 
 ---
@@ -168,7 +166,7 @@ function TodoCount() {
     queryKey: ['todos'],
     queryFn: fetchTodos,
     select: (data) => data.length, // Transform
-  })
+  });
 }
 
 // Cache full data, component gets filtered
@@ -176,8 +174,8 @@ function CompletedTodos() {
   const { data } = useQuery({
     queryKey: ['todos'],
     queryFn: fetchTodos,
-    select: (data) => data.filter(todo => todo.completed),
-  })
+    select: (data) => data.filter((todo) => todo.completed),
+  });
 }
 ```
 
@@ -187,26 +185,26 @@ function CompletedTodos() {
 
 ```tsx
 function TodoList() {
-  const queryClient = useQueryClient()
-  const { data: todos } = useTodos()
+  const queryClient = useQueryClient();
+  const { data: todos } = useTodos();
 
   const prefetch = (id: number) => {
     queryClient.prefetchQuery({
       queryKey: ['todos', id],
       queryFn: () => fetchTodo(id),
       staleTime: 1000 * 60 * 5,
-    })
-  }
+    });
+  };
 
   return (
     <ul>
-      {todos.map(todo => (
+      {todos.map((todo) => (
         <li key={todo.id} onMouseEnter={() => prefetch(todo.id)}>
           <Link to={`/todos/${todo.id}`}>{todo.title}</Link>
         </li>
       ))}
     </ul>
-  )
+  );
 }
 ```
 
@@ -215,10 +213,12 @@ function TodoList() {
 ## 7. Optimistic Updates
 
 Use for:
+
 - ✅ Low-risk actions (toggle, like)
 - ✅ Frequent actions (better UX)
 
 Avoid for:
+
 - ❌ Critical operations (payments)
 - ❌ Complex validations
 
@@ -226,18 +226,18 @@ Avoid for:
 useMutation({
   mutationFn: updateTodo,
   onMutate: async (newTodo) => {
-    await queryClient.cancelQueries({ queryKey: ['todos'] })
-    const previous = queryClient.getQueryData(['todos'])
-    queryClient.setQueryData(['todos'], (old) => [...old, newTodo])
-    return { previous }
+    await queryClient.cancelQueries({ queryKey: ['todos'] });
+    const previous = queryClient.getQueryData(['todos']);
+    queryClient.setQueryData(['todos'], (old) => [...old, newTodo]);
+    return { previous };
   },
   onError: (err, newTodo, context) => {
-    queryClient.setQueryData(['todos'], context.previous)
+    queryClient.setQueryData(['todos'], context.previous);
   },
   onSettled: () => {
-    queryClient.invalidateQueries({ queryKey: ['todos'] })
+    queryClient.invalidateQueries({ queryKey: ['todos'] });
   },
-})
+});
 ```
 
 ---
@@ -251,23 +251,23 @@ useMutation({
 const { data, error, isError } = useQuery({
   queryKey: ['todos'],
   queryFn: fetchTodos,
-})
+});
 
-if (isError) return <div>Error: {error.message}</div>
+if (isError) return <div>Error: {error.message}</div>;
 
 // Global: Error boundaries
 useQuery({
   queryKey: ['todos'],
   queryFn: fetchTodos,
   throwOnError: true, // Throw to boundary
-})
+});
 
 // Conditional: Mix both
 useQuery({
   queryKey: ['todos'],
   queryFn: fetchTodos,
   throwOnError: (error) => error.status >= 500, // Only 5xx to boundary
-})
+});
 ```
 
 ---

@@ -12,17 +12,18 @@ Guide để setup CMS cho phép admin đăng nhập và viết blog bằng Markd
 
 ## 🚀 Solutions Overview
 
-| Solution | Pros | Cons | Best For |
-|----------|------|------|----------|
-| **Tina CMS** | Git-based, Visual editor, Free | Requires git workflow | Static sites, Astro |
-| **Decap CMS** | Open source, Free, Simple | Basic UI | Simple blogs |
-| **Payload CMS** | Powerful, Self-hosted | Complex setup | Advanced needs |
-| **Sanity** | Real-time, Cloud-hosted | Paid plans | Professional |
-| **Custom CMS** | Full control | Time-consuming | Specific needs |
+| Solution        | Pros                           | Cons                  | Best For            |
+| --------------- | ------------------------------ | --------------------- | ------------------- |
+| **Tina CMS**    | Git-based, Visual editor, Free | Requires git workflow | Static sites, Astro |
+| **Decap CMS**   | Open source, Free, Simple      | Basic UI              | Simple blogs        |
+| **Payload CMS** | Powerful, Self-hosted          | Complex setup         | Advanced needs      |
+| **Sanity**      | Real-time, Cloud-hosted        | Paid plans            | Professional        |
+| **Custom CMS**  | Full control                   | Time-consuming        | Specific needs      |
 
 ## ⭐ Recommended: Tina CMS
 
 **Why Tina CMS?**
+
 - ✅ Perfect for Astro + Markdown
 - ✅ Git-based (commits to your repo)
 - ✅ Visual markdown editor with live preview
@@ -36,6 +37,7 @@ Guide để setup CMS cho phép admin đăng nhập và viết blog bằng Markd
 ## 🎨 Option 1: Tina CMS (Recommended)
 
 ### Features
+
 - Git-based workflow (commits changes to repo)
 - Real-time visual editor
 - Markdown support với live preview
@@ -46,11 +48,13 @@ Guide để setup CMS cho phép admin đăng nhập và viết blog bằng Markd
 ### Setup Tina CMS
 
 #### 1. Install Dependencies
+
 ```bash
 npm install tinacms @tinacms/cli
 ```
 
 #### 2. Initialize Tina
+
 ```bash
 npx @tinacms/cli init
 ```
@@ -58,6 +62,7 @@ npx @tinacms/cli init
 #### 3. Configure Tina
 
 **File: `tina/config.ts`**
+
 ```typescript
 import { defineConfig } from 'tinacms';
 
@@ -67,19 +72,19 @@ export default defineConfig({
   branch,
   clientId: process.env.TINA_CLIENT_ID!,
   token: process.env.TINA_TOKEN!,
-  
+
   build: {
     outputFolder: 'admin',
     publicFolder: 'public',
   },
-  
+
   media: {
     tina: {
       mediaRoot: 'src/assets',
       publicFolder: 'public',
     },
   },
-  
+
   schema: {
     collections: [
       {
@@ -142,6 +147,7 @@ export default defineConfig({
 ```
 
 #### 4. Add Scripts to package.json
+
 ```json
 {
   "scripts": {
@@ -153,23 +159,27 @@ export default defineConfig({
 ```
 
 #### 5. Create Tina Cloud Account
+
 1. Go to https://app.tina.io
 2. Sign up (free)
 3. Create new project
 4. Get `TINA_CLIENT_ID` and `TINA_TOKEN`
 
 #### 6. Add to .env
+
 ```bash
 TINA_CLIENT_ID=your_client_id
 TINA_TOKEN=your_token
 ```
 
 #### 7. Access Admin Panel
+
 ```
 http://localhost:4321/admin
 ```
 
 ### Usage Flow
+
 1. Run `npm run dev`
 2. Navigate to `http://localhost:4321/admin`
 3. Login với Tina Cloud account
@@ -182,6 +192,7 @@ http://localhost:4321/admin
 ## 🎨 Option 2: Decap CMS (Netlify CMS)
 
 ### Features
+
 - Open source, completely free
 - Git-based
 - Simple setup
@@ -191,6 +202,7 @@ http://localhost:4321/admin
 ### Setup Decap CMS
 
 #### 1. Install
+
 ```bash
 npm install netlify-cms-app
 ```
@@ -198,49 +210,52 @@ npm install netlify-cms-app
 #### 2. Create Admin Page
 
 **File: `public/admin/index.html`**
+
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
-</head>
-<body>
-  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  </body>
 </html>
 ```
 
 #### 3. Configuration
 
 **File: `public/admin/config.yml`**
+
 ```yaml
 backend:
   name: git-gateway
   branch: main
 
-media_folder: "src/assets"
-public_folder: "/assets"
+media_folder: 'src/assets'
+public_folder: '/assets'
 
 collections:
-  - name: "blog"
-    label: "Blog Posts"
-    folder: "src/content/blog"
+  - name: 'blog'
+    label: 'Blog Posts'
+    folder: 'src/content/blog'
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Publish Date", name: "pubDate", widget: "datetime" }
-      - { label: "Updated Date", name: "updatedDate", widget: "datetime", required: false }
-      - { label: "Hero Image", name: "heroImage", widget: "image", required: false }
-      - { label: "Tags", name: "tags", widget: "list", default: [] }
-      - { label: "Draft", name: "draft", widget: "boolean", default: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Publish Date', name: 'pubDate', widget: 'datetime' }
+      - { label: 'Updated Date', name: 'updatedDate', widget: 'datetime', required: false }
+      - { label: 'Hero Image', name: 'heroImage', widget: 'image', required: false }
+      - { label: 'Tags', name: 'tags', widget: 'list', default: [] }
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: false }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
 ```
 
 #### 4. Enable Git Gateway on Netlify
+
 1. Deploy to Netlify
 2. Go to Site Settings → Identity
 3. Enable Identity service
@@ -248,6 +263,7 @@ collections:
 5. Add yourself as user
 
 #### 5. Access
+
 ```
 https://your-site.netlify.app/admin
 ```
@@ -257,12 +273,14 @@ https://your-site.netlify.app/admin
 ## 🎨 Option 3: Custom CMS với Astro DB + Auth
 
 ### Features
+
 - Full control
 - Custom workflow
 - No external dependencies
 - Self-hosted
 
 ### Architecture
+
 ```
 ┌─────────────────────────────────────┐
 │  Frontend (Astro)                   │
@@ -285,6 +303,7 @@ https://your-site.netlify.app/admin
 ```
 
 ### Tech Stack
+
 - **Database:** Astro DB or Supabase
 - **Auth:** Auth.js (NextAuth) or Supabase Auth
 - **Editor:** TipTap or Monaco Editor
@@ -295,6 +314,7 @@ https://your-site.netlify.app/admin
 #### 1. Setup Auth
 
 **File: `src/pages/api/auth/[...auth].ts`**
+
 ```typescript
 import { Auth } from '@auth/core';
 import GitHub from '@auth/core/providers/github';
@@ -312,6 +332,7 @@ export const { GET, POST } = Auth({
 #### 2. Create Admin Dashboard
 
 **File: `src/pages/admin/index.astro`**
+
 ```astro
 ---
 import { getSession } from '@auth/core';
@@ -338,6 +359,7 @@ if (!session) {
 #### 3. Markdown Editor Component
 
 **File: `public/admin/editor.tsx`**
+
 ```tsx
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -345,7 +367,7 @@ import ReactMarkdown from 'react-markdown';
 export function MarkdownEditor() {
   const [markdown, setMarkdown] = useState('');
   const [title, setTitle] = useState('');
-  
+
   const handleSave = async () => {
     await fetch('/api/posts/create', {
       method: 'POST',
@@ -353,7 +375,7 @@ export function MarkdownEditor() {
       body: JSON.stringify({ title, content: markdown }),
     });
   };
-  
+
   return (
     <div className="grid grid-cols-2 gap-4">
       <div>
@@ -363,11 +385,7 @@ export function MarkdownEditor() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <textarea
-          value={markdown}
-          onChange={(e) => setMarkdown(e.target.value)}
-          rows={20}
-        />
+        <textarea value={markdown} onChange={(e) => setMarkdown(e.target.value)} rows={20} />
         <button onClick={handleSave}>Save Post</button>
       </div>
       <div>
@@ -383,17 +401,17 @@ export function MarkdownEditor() {
 
 ## 📊 Comparison Table
 
-| Feature | Tina CMS | Decap CMS | Custom CMS |
-|---------|----------|-----------|------------|
-| **Setup Time** | 1 hour | 2 hours | 2-4 weeks |
-| **Cost** | Free tier | Free | Free (hosting cost) |
-| **Maintenance** | Low | Low | High |
-| **Customization** | Medium | Low | High |
-| **Auth Built-in** | ✅ Yes | ✅ Yes | ❌ DIY |
-| **Git Integration** | ✅ Yes | ✅ Yes | Optional |
-| **Visual Editor** | ✅ Yes | ❌ No | Custom |
-| **Media Management** | ✅ Yes | ✅ Yes | Custom |
-| **Self-hosted** | Optional | ✅ Yes | ✅ Yes |
+| Feature              | Tina CMS  | Decap CMS | Custom CMS          |
+| -------------------- | --------- | --------- | ------------------- |
+| **Setup Time**       | 1 hour    | 2 hours   | 2-4 weeks           |
+| **Cost**             | Free tier | Free      | Free (hosting cost) |
+| **Maintenance**      | Low       | Low       | High                |
+| **Customization**    | Medium    | Low       | High                |
+| **Auth Built-in**    | ✅ Yes    | ✅ Yes    | ❌ DIY              |
+| **Git Integration**  | ✅ Yes    | ✅ Yes    | Optional            |
+| **Visual Editor**    | ✅ Yes    | ❌ No     | Custom              |
+| **Media Management** | ✅ Yes    | ✅ Yes    | Custom              |
+| **Self-hosted**      | Optional  | ✅ Yes    | ✅ Yes              |
 
 ---
 
@@ -402,6 +420,7 @@ export function MarkdownEditor() {
 ### For Your Portfolio: **Tina CMS**
 
 **Why?**
+
 1. ✅ **Quick Setup** - 1 hour và ready to use
 2. ✅ **Git-based** - All changes committed to repo
 3. ✅ **Visual Editor** - Best writing experience
@@ -410,6 +429,7 @@ export function MarkdownEditor() {
 6. ✅ **No Backend** - No server/database needed
 
 **Workflow:**
+
 ```
 1. Write post in Tina admin (/admin)
    ↓
@@ -427,25 +447,30 @@ export function MarkdownEditor() {
 ## 🚀 Quick Start với Tina CMS
 
 ### Step 1: Install
+
 ```bash
 npm install tinacms @tinacms/cli
 npx @tinacms/cli init
 ```
 
 ### Step 2: Sign up Tina Cloud
+
 - Go to https://app.tina.io
 - Sign up (free)
 - Create project
 - Get credentials
 
 ### Step 3: Configure
+
 Add to `.env`:
+
 ```bash
 TINA_CLIENT_ID=your_id
 TINA_TOKEN=your_token
 ```
 
 ### Step 4: Update package.json
+
 ```json
 {
   "scripts": {
@@ -456,11 +481,13 @@ TINA_TOKEN=your_token
 ```
 
 ### Step 5: Run
+
 ```bash
 npm run dev
 ```
 
 ### Step 6: Access Admin
+
 ```
 http://localhost:4321/admin
 ```
@@ -470,18 +497,23 @@ http://localhost:4321/admin
 ## 📚 Additional Features
 
 ### Image Upload
+
 Tina CMS hỗ trợ upload images trực tiếp trong editor.
 
 ### Media Library
+
 Browse và reuse images từ media library.
 
 ### Draft Posts
+
 Toggle draft status để publish/unpublish posts.
 
 ### Preview
+
 Live preview khi đang edit.
 
 ### Version History
+
 Git history shows all changes.
 
 ---

@@ -2,34 +2,46 @@
 import { skills } from '@/entities/skill';
 ---
 
-<section id="skills" class="py-20 bg-muted">
+<section id="skills" class="bg-muted py-20">
   <div class="container mx-auto px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-foreground">
+    <div class="mx-auto max-w-6xl">
+      <h2 class="mb-4 text-center text-4xl font-bold text-foreground md:text-5xl">
         Skills & Technologies
       </h2>
-      <p class="text-center text-muted-foreground mb-12 text-lg">
+      <p class="mb-12 text-center text-lg text-muted-foreground">
         Technologies I work with on a daily basis
       </p>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        {skills.map((group) => (
-          <div class="bg-card rounded-xl p-6 shadow-lg border border-border">
-            <h3 class="text-2xl font-bold mb-4 text-card-foreground border-b-2 border-primary pb-2">
-              {group.category}
-            </h3>
-            <ul class="space-y-3">
-              {group.items.map((skill) => (
-                <li class="flex items-center gap-2 text-card-foreground">
-                  <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>{skill}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <div class="grid gap-8 md:grid-cols-3">
+        {
+          skills.map((group) => (
+            <div class="rounded-xl border border-border bg-card p-6 shadow-lg">
+              <h3 class="mb-4 border-b-2 border-primary pb-2 text-2xl font-bold text-card-foreground">
+                {group.category}
+              </h3>
+              <ul class="space-y-3">
+                {group.items.map((skill) => (
+                  <li class="flex items-center gap-2 text-card-foreground">
+                    <svg
+                      class="h-5 w-5 flex-shrink-0 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>

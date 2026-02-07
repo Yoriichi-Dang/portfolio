@@ -1,27 +1,27 @@
 // src/hooks/useTodos.ts
-import { useQuery, queryOptions } from '@tanstack/react-query'
+import { useQuery, queryOptions } from '@tanstack/react-query';
 
 /**
  * Type definitions
  */
 export type Todo = {
-  id: number
-  title: string
-  completed: boolean
-  userId: number
-}
+  id: number;
+  title: string;
+  completed: boolean;
+  userId: number;
+};
 
 /**
  * API function - keeps network logic separate
  */
 async function fetchTodos(): Promise<Todo[]> {
-  const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+  const response = await fetch('https://jsonplaceholder.typicode.com/todos');
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch todos: ${response.statusText}`)
+    throw new Error(`Failed to fetch todos: ${response.statusText}`);
   }
 
-  return response.json()
+  return response.json();
 }
 
 /**
@@ -36,7 +36,7 @@ export const todosQueryOptions = queryOptions({
   queryKey: ['todos'],
   queryFn: fetchTodos,
   staleTime: 1000 * 60, // 1 minute
-})
+});
 
 /**
  * Custom hook - encapsulates query logic
@@ -45,22 +45,20 @@ export const todosQueryOptions = queryOptions({
  * const { data, isPending, isError, error } = useTodos()
  */
 export function useTodos() {
-  return useQuery(todosQueryOptions)
+  return useQuery(todosQueryOptions);
 }
 
 /**
  * Fetch single todo by ID
  */
 async function fetchTodoById(id: number): Promise<Todo> {
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/todos/${id}`
-  )
+  const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`);
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch todo ${id}: ${response.statusText}`)
+    throw new Error(`Failed to fetch todo ${id}: ${response.statusText}`);
   }
 
-  return response.json()
+  return response.json();
 }
 
 /**
@@ -74,21 +72,21 @@ export function useTodo(id: number) {
     queryKey: ['todos', id],
     queryFn: () => fetchTodoById(id),
     enabled: !!id, // Only fetch if id is truthy
-  })
+  });
 }
 
 /**
  * Component usage example:
  */
 export function TodoList() {
-  const { data, isPending, isError, error, isFetching } = useTodos()
+  const { data, isPending, isError, error, isFetching } = useTodos();
 
   if (isPending) {
-    return <div>Loading todos...</div>
+    return <div>Loading todos...</div>;
   }
 
   if (isError) {
-    return <div>Error: {error.message}</div>
+    return <div>Error: {error.message}</div>;
   }
 
   return (
@@ -103,7 +101,7 @@ export function TodoList() {
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
 /**

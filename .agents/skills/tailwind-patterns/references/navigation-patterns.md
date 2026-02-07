@@ -10,28 +10,28 @@ Header, footer, menu, and navigation component patterns for Tailwind CSS.
 
 ```tsx
 <header className="border-b border-border bg-background">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div className="flex h-16 items-center justify-between">
       {/* Logo */}
-      <a href="/" className="font-bold text-xl">
+      <a href="/" className="text-xl font-bold">
         Brand
       </a>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex gap-6">
-        <a href="#features" className="text-sm hover:text-primary transition-colors">
+      <nav className="hidden gap-6 md:flex">
+        <a href="#features" className="text-sm transition-colors hover:text-primary">
           Features
         </a>
-        <a href="#pricing" className="text-sm hover:text-primary transition-colors">
+        <a href="#pricing" className="text-sm transition-colors hover:text-primary">
           Pricing
         </a>
-        <a href="#about" className="text-sm hover:text-primary transition-colors">
+        <a href="#about" className="text-sm transition-colors hover:text-primary">
           About
         </a>
       </nav>
 
       {/* CTA Button */}
-      <button className="bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm">
+      <button className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">
         Sign Up
       </button>
     </div>
@@ -42,16 +42,15 @@ Header, footer, menu, and navigation component patterns for Tailwind CSS.
 ### Sticky Header with Backdrop Blur
 
 ```tsx
-<header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex h-16 items-center justify-between">
-      {/* Header content */}
-    </div>
+<header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b border-border backdrop-blur">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="flex h-16 items-center justify-between">{/* Header content */}</div>
   </div>
 </header>
 ```
 
 **Key classes**:
+
 - `sticky top-0` - Stays at top when scrolling
 - `z-50` - Above other content
 - `bg-background/95` - Semi-transparent background
@@ -61,20 +60,20 @@ Header, footer, menu, and navigation component patterns for Tailwind CSS.
 
 ```tsx
 <header className="border-b border-border bg-background">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div className="flex h-16 items-center justify-between gap-4">
       {/* Logo */}
-      <a href="/" className="font-bold text-xl flex-shrink-0">
+      <a href="/" className="flex-shrink-0 text-xl font-bold">
         Brand
       </a>
 
       {/* Search Bar */}
-      <div className="flex-1 max-w-md">
+      <div className="max-w-md flex-1">
         <div className="relative">
           <input
             type="search"
             placeholder="Search..."
-            className="w-full px-4 py-2 pl-10 bg-muted border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full rounded-md border border-border bg-muted px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-primary"
           />
           <svg className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground">
             {/* Search icon */}
@@ -85,7 +84,7 @@ Header, footer, menu, and navigation component patterns for Tailwind CSS.
       {/* Right side buttons */}
       <div className="flex items-center gap-4">
         <button className="text-sm">Sign In</button>
-        <button className="bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm">
+        <button className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">
           Sign Up
         </button>
       </div>
@@ -101,34 +100,40 @@ Header, footer, menu, and navigation component patterns for Tailwind CSS.
 ### Hamburger Menu Button
 
 ```tsx
-'use client'
+'use client';
 
-import { useState } from 'react'
+import { useState } from 'react';
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <>
       <header className="border-b border-border bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <a href="/" className="font-bold text-xl">
+            <a href="/" className="text-xl font-bold">
               Brand
             </a>
 
             {/* Desktop Nav (hidden on mobile) */}
-            <nav className="hidden md:flex gap-6">
-              <a href="#features" className="text-sm hover:text-primary">Features</a>
-              <a href="#pricing" className="text-sm hover:text-primary">Pricing</a>
-              <a href="#about" className="text-sm hover:text-primary">About</a>
+            <nav className="hidden gap-6 md:flex">
+              <a href="#features" className="text-sm hover:text-primary">
+                Features
+              </a>
+              <a href="#pricing" className="text-sm hover:text-primary">
+                Pricing
+              </a>
+              <a href="#about" className="text-sm hover:text-primary">
+                About
+              </a>
             </nav>
 
             {/* Mobile Menu Button (hidden on desktop) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2"
+              className="p-2 md:hidden"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -139,7 +144,7 @@ export function Header() {
             </button>
 
             {/* Desktop CTA (hidden on mobile) */}
-            <button className="hidden md:block bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm">
+            <button className="hidden rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground md:block">
               Sign Up
             </button>
           </div>
@@ -147,8 +152,8 @@ export function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-border">
-            <nav className="px-4 py-6 space-y-4">
+          <div className="border-t border-border md:hidden">
+            <nav className="space-y-4 px-4 py-6">
               <a href="#features" className="block text-sm hover:text-primary">
                 Features
               </a>
@@ -158,7 +163,7 @@ export function Header() {
               <a href="#about" className="block text-sm hover:text-primary">
                 About
               </a>
-              <button className="w-full bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm mt-4">
+              <button className="mt-4 w-full rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">
                 Sign Up
               </button>
             </nav>
@@ -166,33 +171,36 @@ export function Header() {
         )}
       </header>
     </>
-  )
+  );
 }
 ```
 
 ### Slide-In Mobile Menu
 
 ```tsx
-{/* Overlay */}
-{mobileMenuOpen && (
-  <div
-    className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 md:hidden"
-    onClick={() => setMobileMenuOpen(false)}
-  />
-)}
+{
+  /* Overlay */
+}
+{
+  mobileMenuOpen && (
+    <div
+      className="bg-background/80 fixed inset-0 z-40 backdrop-blur-sm md:hidden"
+      onClick={() => setMobileMenuOpen(false)}
+    />
+  );
+}
 
-{/* Slide-in menu */}
+{
+  /* Slide-in menu */
+}
 <div
-  className={`fixed right-0 top-0 h-full w-64 bg-card border-l border-border z-50 transform transition-transform md:hidden ${
+  className={`fixed right-0 top-0 z-50 h-full w-64 transform border-l border-border bg-card transition-transform md:hidden ${
     mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
   }`}
 >
   <div className="p-6">
     {/* Close button */}
-    <button
-      onClick={() => setMobileMenuOpen(false)}
-      className="mb-8 p-2"
-    >
+    <button onClick={() => setMobileMenuOpen(false)} className="mb-8 p-2">
       <svg className="h-6 w-6">✕</svg>
     </button>
 
@@ -209,7 +217,7 @@ export function Header() {
       </a>
     </nav>
   </div>
-</div>
+</div>;
 ```
 
 ---
@@ -219,12 +227,18 @@ export function Header() {
 ### Desktop Dropdown
 
 ```tsx
-'use client'
+'use client';
 
-import { useState } from 'react'
+import { useState } from 'react';
 
-export function NavItem({ label, items }: { label: string; items: { label: string; href: string }[] }) {
-  const [isOpen, setIsOpen] = useState(false)
+export function NavItem({
+  label,
+  items,
+}: {
+  label: string;
+  items: { label: string; href: string }[];
+}) {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div
@@ -240,20 +254,16 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
 
       {/* Dropdown */}
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-lg py-2">
-          {items.map(item => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="block px-4 py-2 text-sm hover:bg-muted"
-            >
+        <div className="absolute left-0 top-full mt-2 w-48 rounded-lg border border-border bg-card py-2 shadow-lg">
+          {items.map((item) => (
+            <a key={item.href} href={item.href} className="block px-4 py-2 text-sm hover:bg-muted">
               {item.label}
             </a>
           ))}
         </div>
       )}
     </div>
-  )
+  );
 }
 ```
 
@@ -295,20 +305,28 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
 <nav aria-label="Breadcrumb" className="mb-8">
   <ol className="flex items-center gap-2 text-sm text-muted-foreground">
     <li>
-      <a href="/" className="hover:text-primary">Home</a>
+      <a href="/" className="hover:text-primary">
+        Home
+      </a>
     </li>
-    <li><svg className="h-4 w-4">›</svg></li>
+    <li>
+      <svg className="h-4 w-4">›</svg>
+    </li>
     <li>
       <button className="hover:text-primary">...</button>
     </li>
-    <li><svg className="h-4 w-4">›</svg></li>
     <li>
-      <a href="/category" className="hover:text-primary max-w-[200px] truncate">
+      <svg className="h-4 w-4">›</svg>
+    </li>
+    <li>
+      <a href="/category" className="max-w-[200px] truncate hover:text-primary">
         Long Category Name
       </a>
     </li>
-    <li><svg className="h-4 w-4">›</svg></li>
-    <li aria-current="page" className="font-medium text-foreground max-w-[200px] truncate">
+    <li>
+      <svg className="h-4 w-4">›</svg>
+    </li>
+    <li aria-current="page" className="max-w-[200px] truncate font-medium text-foreground">
       Current Page Title
     </li>
   </ol>
@@ -326,24 +344,18 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
   <nav className="space-y-1">
     <a
       href="/dashboard"
-      className="flex items-center gap-3 px-3 py-2 rounded-md bg-primary text-primary-foreground"
+      className="flex items-center gap-3 rounded-md bg-primary px-3 py-2 text-primary-foreground"
     >
       <svg className="h-5 w-5">📊</svg>
       <span className="text-sm font-medium">Dashboard</span>
     </a>
 
-    <a
-      href="/projects"
-      className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-muted"
-    >
+    <a href="/projects" className="flex items-center gap-3 rounded-md px-3 py-2 hover:bg-muted">
       <svg className="h-5 w-5">📁</svg>
       <span className="text-sm">Projects</span>
     </a>
 
-    <a
-      href="/settings"
-      className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-muted"
-    >
+    <a href="/settings" className="flex items-center gap-3 rounded-md px-3 py-2 hover:bg-muted">
       <svg className="h-5 w-5">⚙️</svg>
       <span className="text-sm">Settings</span>
     </a>
@@ -358,15 +370,16 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
   <nav className="space-y-6">
     {/* Group 1 */}
     <div>
-      <div className="text-xs font-semibold text-muted-foreground uppercase mb-2 px-3">
-        Main
-      </div>
+      <div className="mb-2 px-3 text-xs font-semibold uppercase text-muted-foreground">Main</div>
       <div className="space-y-1">
-        <a href="/dashboard" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-muted">
+        <a
+          href="/dashboard"
+          className="flex items-center gap-3 rounded-md px-3 py-2 hover:bg-muted"
+        >
           <svg className="h-5 w-5">📊</svg>
           <span className="text-sm">Dashboard</span>
         </a>
-        <a href="/projects" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-muted">
+        <a href="/projects" className="flex items-center gap-3 rounded-md px-3 py-2 hover:bg-muted">
           <svg className="h-5 w-5">📁</svg>
           <span className="text-sm">Projects</span>
         </a>
@@ -375,15 +388,15 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
 
     {/* Group 2 */}
     <div>
-      <div className="text-xs font-semibold text-muted-foreground uppercase mb-2 px-3">
+      <div className="mb-2 px-3 text-xs font-semibold uppercase text-muted-foreground">
         Settings
       </div>
       <div className="space-y-1">
-        <a href="/profile" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-muted">
+        <a href="/profile" className="flex items-center gap-3 rounded-md px-3 py-2 hover:bg-muted">
           <svg className="h-5 w-5">👤</svg>
           <span className="text-sm">Profile</span>
         </a>
-        <a href="/settings" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-muted">
+        <a href="/settings" className="flex items-center gap-3 rounded-md px-3 py-2 hover:bg-muted">
           <svg className="h-5 w-5">⚙️</svg>
           <span className="text-sm">Settings</span>
         </a>
@@ -400,13 +413,11 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
 ### Simple Footer
 
 ```tsx
-<footer className="border-t border-border bg-muted/50 mt-auto">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+<footer className="bg-muted/50 mt-auto border-t border-border">
+  <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
       {/* Copyright */}
-      <p className="text-sm text-muted-foreground">
-        © 2026 Brand. All rights reserved.
-      </p>
+      <p className="text-sm text-muted-foreground">© 2026 Brand. All rights reserved.</p>
 
       {/* Links */}
       <nav className="flex gap-6">
@@ -428,55 +439,101 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
 ### Multi-Column Footer
 
 ```tsx
-<footer className="border-t border-border bg-muted/50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+<footer className="bg-muted/50 border-t border-border">
+  <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
       {/* Column 1 */}
       <div>
-        <h4 className="font-semibold mb-4">Product</h4>
+        <h4 className="mb-4 font-semibold">Product</h4>
         <ul className="space-y-2 text-sm text-muted-foreground">
-          <li><a href="#" className="hover:text-primary">Features</a></li>
-          <li><a href="#" className="hover:text-primary">Pricing</a></li>
-          <li><a href="#" className="hover:text-primary">Roadmap</a></li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Features
+            </a>
+          </li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Pricing
+            </a>
+          </li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Roadmap
+            </a>
+          </li>
         </ul>
       </div>
 
       {/* Column 2 */}
       <div>
-        <h4 className="font-semibold mb-4">Company</h4>
+        <h4 className="mb-4 font-semibold">Company</h4>
         <ul className="space-y-2 text-sm text-muted-foreground">
-          <li><a href="#" className="hover:text-primary">About</a></li>
-          <li><a href="#" className="hover:text-primary">Blog</a></li>
-          <li><a href="#" className="hover:text-primary">Careers</a></li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Careers
+            </a>
+          </li>
         </ul>
       </div>
 
       {/* Column 3 */}
       <div>
-        <h4 className="font-semibold mb-4">Resources</h4>
+        <h4 className="mb-4 font-semibold">Resources</h4>
         <ul className="space-y-2 text-sm text-muted-foreground">
-          <li><a href="#" className="hover:text-primary">Documentation</a></li>
-          <li><a href="#" className="hover:text-primary">Support</a></li>
-          <li><a href="#" className="hover:text-primary">API</a></li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Documentation
+            </a>
+          </li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Support
+            </a>
+          </li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              API
+            </a>
+          </li>
         </ul>
       </div>
 
       {/* Column 4 */}
       <div>
-        <h4 className="font-semibold mb-4">Legal</h4>
+        <h4 className="mb-4 font-semibold">Legal</h4>
         <ul className="space-y-2 text-sm text-muted-foreground">
-          <li><a href="#" className="hover:text-primary">Privacy</a></li>
-          <li><a href="#" className="hover:text-primary">Terms</a></li>
-          <li><a href="#" className="hover:text-primary">Security</a></li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Privacy
+            </a>
+          </li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Terms
+            </a>
+          </li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Security
+            </a>
+          </li>
         </ul>
       </div>
     </div>
 
     {/* Bottom bar */}
-    <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p className="text-sm text-muted-foreground">
-        © 2026 Brand. All rights reserved.
-      </p>
+    <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
+      <p className="text-sm text-muted-foreground">© 2026 Brand. All rights reserved.</p>
       <div className="flex gap-4">
         <a href="#" className="text-muted-foreground hover:text-primary">
           <svg className="h-5 w-5">𝕏</svg>
@@ -496,22 +553,22 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
 ### Footer with Newsletter
 
 ```tsx
-<footer className="border-t border-border bg-muted/50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<footer className="bg-muted/50 border-t border-border">
+  <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
     {/* Newsletter section */}
-    <div className="bg-card border border-border rounded-lg p-8 mb-12">
-      <div className="max-w-2xl mx-auto text-center">
-        <h3 className="text-2xl font-bold mb-2">Stay updated</h3>
-        <p className="text-muted-foreground mb-6">
+    <div className="mb-12 rounded-lg border border-border bg-card p-8">
+      <div className="mx-auto max-w-2xl text-center">
+        <h3 className="mb-2 text-2xl font-bold">Stay updated</h3>
+        <p className="mb-6 text-muted-foreground">
           Get the latest news and updates delivered to your inbox.
         </p>
-        <form className="flex gap-2 max-w-md mx-auto">
+        <form className="mx-auto flex max-w-md gap-2">
           <input
             type="email"
             placeholder="Enter your email"
-            className="flex-1 px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            className="flex-1 rounded-md border border-border bg-background px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
           />
-          <button className="bg-primary text-primary-foreground px-6 py-2 rounded-md hover:bg-primary/90">
+          <button className="hover:bg-primary/90 rounded-md bg-primary px-6 py-2 text-primary-foreground">
             Subscribe
           </button>
         </form>
@@ -519,9 +576,7 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
     </div>
 
     {/* Footer columns */}
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-      {/* Columns... */}
-    </div>
+    <div className="grid grid-cols-2 gap-8 md:grid-cols-4">{/* Columns... */}</div>
   </div>
 </footer>
 ```
@@ -535,21 +590,18 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
 ```tsx
 <div className="border-b border-border">
   <nav className="-mb-px flex gap-8">
-    <a
-      href="#overview"
-      className="border-b-2 border-primary text-sm font-medium py-4"
-    >
+    <a href="#overview" className="border-b-2 border-primary py-4 text-sm font-medium">
       Overview
     </a>
     <a
       href="#details"
-      className="border-b-2 border-transparent text-sm text-muted-foreground hover:text-foreground py-4"
+      className="border-b-2 border-transparent py-4 text-sm text-muted-foreground hover:text-foreground"
     >
       Details
     </a>
     <a
       href="#reviews"
-      className="border-b-2 border-transparent text-sm text-muted-foreground hover:text-foreground py-4"
+      className="border-b-2 border-transparent py-4 text-sm text-muted-foreground hover:text-foreground"
     >
       Reviews
     </a>
@@ -560,16 +612,12 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
 ### Pill Tabs
 
 ```tsx
-<nav className="inline-flex gap-2 p-1 bg-muted rounded-lg">
-  <button className="px-4 py-2 text-sm font-medium bg-background rounded-md shadow">
+<nav className="inline-flex gap-2 rounded-lg bg-muted p-1">
+  <button className="rounded-md bg-background px-4 py-2 text-sm font-medium shadow">
     Overview
   </button>
-  <button className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground">
-    Details
-  </button>
-  <button className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground">
-    Reviews
-  </button>
+  <button className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground">Details</button>
+  <button className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground">Reviews</button>
 </nav>
 ```
 
@@ -581,29 +629,22 @@ export function NavItem({ label, items }: { label: string; items: { label: strin
 
 ```tsx
 <nav className="flex items-center justify-center gap-2" aria-label="Pagination">
-  <button className="px-3 py-2 rounded-md border border-border hover:bg-muted disabled:opacity-50" disabled>
+  <button
+    className="rounded-md border border-border px-3 py-2 hover:bg-muted disabled:opacity-50"
+    disabled
+  >
     Previous
   </button>
 
-  <button className="px-3 py-2 rounded-md bg-primary text-primary-foreground">
-    1
-  </button>
-  <button className="px-3 py-2 rounded-md border border-border hover:bg-muted">
-    2
-  </button>
-  <button className="px-3 py-2 rounded-md border border-border hover:bg-muted">
-    3
-  </button>
+  <button className="rounded-md bg-primary px-3 py-2 text-primary-foreground">1</button>
+  <button className="rounded-md border border-border px-3 py-2 hover:bg-muted">2</button>
+  <button className="rounded-md border border-border px-3 py-2 hover:bg-muted">3</button>
 
   <span className="px-3 py-2">...</span>
 
-  <button className="px-3 py-2 rounded-md border border-border hover:bg-muted">
-    10
-  </button>
+  <button className="rounded-md border border-border px-3 py-2 hover:bg-muted">10</button>
 
-  <button className="px-3 py-2 rounded-md border border-border hover:bg-muted">
-    Next
-  </button>
+  <button className="rounded-md border border-border px-3 py-2 hover:bg-muted">Next</button>
 </nav>
 ```
 

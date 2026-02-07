@@ -10,7 +10,7 @@ Corrections for common Tailwind CSS pattern mistakes.
 
 ```tsx
 // DON'T - Breaks dark mode
-<div className="bg-white text-gray-900 border-gray-200">
+<div className="border-gray-200 bg-white text-gray-900">
   <p className="text-gray-600">Content</p>
   <button className="bg-blue-500 text-white">Click</button>
 </div>
@@ -20,7 +20,7 @@ Corrections for common Tailwind CSS pattern mistakes.
 
 ```tsx
 // DO - Works in both light and dark mode
-<div className="bg-card text-card-foreground border-border">
+<div className="border-border bg-card text-card-foreground">
   <p className="text-muted-foreground">Content</p>
   <button className="bg-primary text-primary-foreground">Click</button>
 </div>
@@ -62,8 +62,8 @@ Corrections for common Tailwind CSS pattern mistakes.
 
 ```tsx
 // DON'T - Inconsistent spacing
-<div className="p-5 mb-7 gap-3">
-  <div className="mt-9 mb-11">Content</div>
+<div className="mb-7 gap-3 p-5">
+  <div className="mb-11 mt-9">Content</div>
 </div>
 ```
 
@@ -71,14 +71,15 @@ Corrections for common Tailwind CSS pattern mistakes.
 
 ```tsx
 // DO - Use scale of 4, 6, 8, 12, 16, 24
-<div className="p-6 mb-8 gap-4">
-  <div className="mt-8 mb-12">Content</div>
+<div className="mb-8 gap-4 p-6">
+  <div className="mb-12 mt-8">Content</div>
 </div>
 ```
 
 **Why**: Consistent spacing creates visual rhythm and prevents design drift.
 
 **Standard scale**:
+
 - Tight: 2, 4
 - Standard: 6, 8
 - Loose: 12, 16
@@ -152,7 +153,7 @@ Corrections for common Tailwind CSS pattern mistakes.
 
 ```tsx
 // DON'T - Defeats purpose of semantic tokens
-<div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+<div className="bg-white text-gray-900 dark:bg-gray-800 dark:text-white">
   <p className="text-gray-600 dark:text-gray-300">Content</p>
 </div>
 ```
@@ -176,7 +177,7 @@ Corrections for common Tailwind CSS pattern mistakes.
 
 ```tsx
 // DON'T - Missing responsive padding
-<div className="max-w-7xl mx-auto">
+<div className="mx-auto max-w-7xl">
   <h1>Title</h1>
 </div>
 ```
@@ -185,7 +186,7 @@ Corrections for common Tailwind CSS pattern mistakes.
 
 ```tsx
 // DO - Standard container with padding
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
   <h1>Title</h1>
 </div>
 ```
@@ -222,9 +223,7 @@ Corrections for common Tailwind CSS pattern mistakes.
 
 ```tsx
 // DON'T - Too small for mobile
-<button className="px-2 py-1 text-xs">
-  Click
-</button>
+<button className="px-2 py-1 text-xs">Click</button>
 ```
 
 ### ✅ Correct: Minimum 44x44px Touch Target
@@ -337,9 +336,7 @@ Corrections for common Tailwind CSS pattern mistakes.
 
 ```tsx
 // DON'T - Causes reflow (janky)
-<div className="transition-all hover:w-64 hover:h-64 hover:top-10 hover:left-10">
-  Content
-</div>
+<div className="transition-all hover:left-10 hover:top-10 hover:h-64 hover:w-64">Content</div>
 ```
 
 ### ✅ Correct: Animate Transform/Opacity Only
@@ -364,6 +361,7 @@ Corrections for common Tailwind CSS pattern mistakes.
 When you see patterns that violate these rules, automatically apply the corrections shown above.
 
 **Priority order**:
+
 1. Semantic colors (breaks dark mode)
 2. Responsive design (breaks mobile)
 3. Spacing consistency (visual quality)

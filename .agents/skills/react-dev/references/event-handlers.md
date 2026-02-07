@@ -336,10 +336,7 @@ function handleMultiTouch(event: React.TouchEvent<HTMLDivElement>) {
   if (event.touches.length === 2) {
     const [touch1, touch2] = event.touches;
 
-    const distance = Math.hypot(
-      touch2.clientX - touch1.clientX,
-      touch2.clientY - touch1.clientY
-    );
+    const distance = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
 
     console.log('Pinch distance:', distance);
   }
@@ -375,9 +372,7 @@ Reusable handlers with proper typing.
 
 ```typescript
 // Generic change handler
-function createChangeHandler<T extends HTMLElement>(
-  callback: (value: string) => void
-) {
+function createChangeHandler<T extends HTMLElement>(callback: (value: string) => void) {
   return (event: React.ChangeEvent<T>) => {
     if ('value' in event.target) {
       callback(event.target.value);

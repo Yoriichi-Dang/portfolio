@@ -7,6 +7,7 @@
 **Fastest way để test:**
 
 #### Step 1: Add image to folder
+
 ```bash
 # Copy your image
 cp ~/Downloads/my-image.jpg public/uploads/
@@ -17,22 +18,26 @@ Or drag & drop file vào `public/uploads/` trong Finder/Explorer.
 #### Step 2: Use trong TinaCMS
 
 **Hero Image:**
+
 ```
 Type: /uploads/my-image.jpg
 ```
 
 **In Content:**
 Click image button trong editor toolbar, paste URL:
+
 ```
 /uploads/my-image.jpg
 ```
 
 Or type manually trong markdown:
+
 ```markdown
 ![Alt text](/uploads/my-image.jpg)
 ```
 
 #### Step 3: Done!
+
 Image sẽ hiện trong blog post.
 
 ---
@@ -42,6 +47,7 @@ Image sẽ hiện trong blog post.
 **For production - best option!**
 
 #### Quick Setup:
+
 ```bash
 # 1. Sign up
 https://cloudinary.com
@@ -63,6 +69,7 @@ npm run dev
 ```
 
 #### Then:
+
 - Click upload trong TinaCMS
 - Select image
 - Auto uploaded to Cloudinary CDN
@@ -75,6 +82,7 @@ npm run dev
 **Use existing images trong src/assets/**
 
 #### Current images:
+
 ```bash
 ls src/assets/
 # blog-placeholder-1.jpg
@@ -84,6 +92,7 @@ ls src/assets/
 ```
 
 #### Reference trong markdown:
+
 ```markdown
 ---
 heroImage: ../../assets/blog-placeholder-1.jpg
@@ -95,6 +104,7 @@ heroImage: ../../assets/blog-placeholder-1.jpg
 ## 📋 Image Best Practices
 
 ### 1. **Naming**
+
 ```bash
 # ✅ Good
 hero-image.jpg
@@ -108,17 +118,21 @@ image (1).jpg
 ```
 
 ### 2. **Size**
+
 - Hero images: max 1920x1080px
 - Thumbnails: max 800x600px
 - Compress before upload
 
 ### 3. **Format**
+
 - Photos: `.jpg` (smaller size)
 - Graphics: `.png` (transparent)
 - Modern: `.webp` (best compression)
 
 ### 4. **Alt Text**
+
 Always add alt text cho accessibility:
+
 ```markdown
 ![Developer working on code](/uploads/hero.jpg)
 ```
@@ -141,6 +155,7 @@ src/
 ```
 
 **URLs:**
+
 - Public: `/uploads/hero-1.jpg`
 - Assets: `../../assets/blog-placeholder-1.jpg`
 
@@ -149,17 +164,20 @@ src/
 ## 🚀 Test Now
 
 ### 1. Add test image:
+
 ```bash
 # Download any image or use existing
 cp src/assets/blog-placeholder-1.jpg public/uploads/test.jpg
 ```
 
 ### 2. Create post trong TinaCMS:
+
 ```
 http://localhost:4323/admin/index.html
 ```
 
 ### 3. Set hero image:
+
 ```
 Hero Image: /uploads/test.jpg
 ```

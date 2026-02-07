@@ -16,7 +16,7 @@ Complete form styling patterns for Tailwind CSS projects.
   <input
     id="name"
     type="text"
-    className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    className="w-full rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
     placeholder="Enter your name"
   />
 </div>
@@ -32,7 +32,7 @@ Complete form styling patterns for Tailwind CSS projects.
   <input
     id="email"
     type="email"
-    className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    className="w-full rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
     placeholder="you@example.com"
   />
 </div>
@@ -48,7 +48,7 @@ Complete form styling patterns for Tailwind CSS projects.
   <input
     id="password"
     type="password"
-    className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    className="w-full rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
     placeholder="••••••••"
   />
 </div>
@@ -64,11 +64,9 @@ Complete form styling patterns for Tailwind CSS projects.
   <input
     id="username"
     type="text"
-    className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    className="w-full rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
   />
-  <p className="text-sm text-muted-foreground">
-    This will be your public display name.
-  </p>
+  <p className="text-sm text-muted-foreground">This will be your public display name.</p>
 </div>
 ```
 
@@ -84,7 +82,7 @@ Complete form styling patterns for Tailwind CSS projects.
   <textarea
     id="message"
     rows={4}
-    className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-y"
+    className="w-full resize-y rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
     placeholder="Type your message here..."
   />
 </div>
@@ -101,7 +99,7 @@ Complete form styling patterns for Tailwind CSS projects.
   </label>
   <select
     id="country"
-    className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    className="w-full rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
   >
     <option value="">Select a country</option>
     <option value="us">United States</option>
@@ -134,9 +132,7 @@ Complete form styling patterns for Tailwind CSS projects.
 
 ```tsx
 <fieldset className="space-y-3">
-  <legend className="text-sm font-medium mb-2">
-    Preferences
-  </legend>
+  <legend className="mb-2 text-sm font-medium">Preferences</legend>
 
   <div className="flex items-center space-x-2">
     <input
@@ -168,9 +164,7 @@ Complete form styling patterns for Tailwind CSS projects.
 
 ```tsx
 <fieldset className="space-y-3">
-  <legend className="text-sm font-medium mb-2">
-    Plan
-  </legend>
+  <legend className="mb-2 text-sm font-medium">Plan</legend>
 
   <div className="flex items-center space-x-2">
     <input
@@ -214,7 +208,7 @@ Complete form styling patterns for Tailwind CSS projects.
   <input
     id="email"
     type="email"
-    className="w-full px-3 py-2 bg-background border border-destructive rounded-md focus:outline-none focus:ring-2 focus:ring-destructive"
+    className="w-full rounded-md border border-destructive bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-destructive"
     aria-invalid="true"
     aria-describedby="email-error"
   />
@@ -236,9 +230,9 @@ Complete form styling patterns for Tailwind CSS projects.
     <input
       id="username"
       type="text"
-      className="w-full px-3 py-2 bg-background border border-success rounded-md focus:outline-none focus:ring-2 focus:ring-success"
+      className="border-success focus:ring-success w-full rounded-md border bg-background px-3 py-2 focus:outline-none focus:ring-2"
     />
-    <p className="text-sm text-success flex items-center gap-1">
+    <p className="text-success flex items-center gap-1 text-sm">
       <svg className="h-4 w-4">✓</svg>
       Username is available
     </p>
@@ -252,11 +246,9 @@ Complete form styling patterns for Tailwind CSS projects.
     <input
       id="email"
       type="email"
-      className="w-full px-3 py-2 bg-background border border-destructive rounded-md focus:outline-none focus:ring-2 focus:ring-destructive"
+      className="w-full rounded-md border border-destructive bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-destructive"
     />
-    <p className="text-sm text-destructive">
-      This email is already registered
-    </p>
+    <p className="text-sm text-destructive">This email is already registered</p>
   </div>
 </form>
 ```
@@ -270,11 +262,9 @@ Complete form styling patterns for Tailwind CSS projects.
   <input
     type="search"
     placeholder="Search..."
-    className="w-full px-4 py-2 pl-10 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    className="w-full rounded-md border border-border bg-background px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-primary"
   />
-  <svg className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground">
-    {/* Search icon */}
-  </svg>
+  <svg className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground">{/* Search icon */}</svg>
 </div>
 ```
 
@@ -290,19 +280,13 @@ Complete form styling patterns for Tailwind CSS projects.
   <div className="flex items-center gap-4">
     <label
       htmlFor="file"
-      className="px-4 py-2 bg-secondary text-secondary-foreground rounded-md cursor-pointer hover:bg-secondary/80 transition-colors"
+      className="hover:bg-secondary/80 cursor-pointer rounded-md bg-secondary px-4 py-2 text-secondary-foreground transition-colors"
     >
       Choose File
     </label>
-    <span className="text-sm text-muted-foreground">
-      No file chosen
-    </span>
+    <span className="text-sm text-muted-foreground">No file chosen</span>
   </div>
-  <input
-    id="file"
-    type="file"
-    className="sr-only"
-  />
+  <input id="file" type="file" className="sr-only" />
 </div>
 ```
 
@@ -311,7 +295,7 @@ Complete form styling patterns for Tailwind CSS projects.
 ## Complete Form Example
 
 ```tsx
-<form className="space-y-6 max-w-md">
+<form className="max-w-md space-y-6">
   <div className="space-y-4">
     {/* Name */}
     <div className="space-y-2">
@@ -321,7 +305,7 @@ Complete form styling patterns for Tailwind CSS projects.
       <input
         id="name"
         type="text"
-        className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+        className="w-full rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
         required
       />
     </div>
@@ -334,7 +318,7 @@ Complete form styling patterns for Tailwind CSS projects.
       <input
         id="email"
         type="email"
-        className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+        className="w-full rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
         required
       />
     </div>
@@ -347,7 +331,7 @@ Complete form styling patterns for Tailwind CSS projects.
       <textarea
         id="message"
         rows={4}
-        className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-y"
+        className="w-full resize-y rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
         required
       />
     </div>
@@ -361,7 +345,10 @@ Complete form styling patterns for Tailwind CSS projects.
         required
       />
       <label htmlFor="terms" className="text-sm">
-        I agree to the <a href="/terms" className="text-primary hover:underline">terms</a>
+        I agree to the{' '}
+        <a href="/terms" className="text-primary hover:underline">
+          terms
+        </a>
       </label>
     </div>
   </div>
@@ -369,7 +356,7 @@ Complete form styling patterns for Tailwind CSS projects.
   {/* Submit */}
   <button
     type="submit"
-    className="w-full bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
+    className="hover:bg-primary/90 w-full rounded-md bg-primary px-4 py-2 text-primary-foreground transition-colors"
   >
     Submit
   </button>

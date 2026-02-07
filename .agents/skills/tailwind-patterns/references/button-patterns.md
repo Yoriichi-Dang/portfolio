@@ -9,7 +9,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Primary Button
 
 ```tsx
-<button className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors">
+<button className="hover:bg-primary/90 rounded-md bg-primary px-4 py-2 text-primary-foreground transition-colors">
   Primary
 </button>
 ```
@@ -17,7 +17,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Secondary Button
 
 ```tsx
-<button className="bg-secondary text-secondary-foreground px-4 py-2 rounded-md hover:bg-secondary/80 transition-colors">
+<button className="hover:bg-secondary/80 rounded-md bg-secondary px-4 py-2 text-secondary-foreground transition-colors">
   Secondary
 </button>
 ```
@@ -25,7 +25,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Outline Button
 
 ```tsx
-<button className="border border-border bg-transparent px-4 py-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
+<button className="rounded-md border border-border bg-transparent px-4 py-2 transition-colors hover:bg-accent hover:text-accent-foreground">
   Outline
 </button>
 ```
@@ -33,7 +33,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Ghost Button
 
 ```tsx
-<button className="bg-transparent px-4 py-2 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
+<button className="rounded-md bg-transparent px-4 py-2 transition-colors hover:bg-accent hover:text-accent-foreground">
   Ghost
 </button>
 ```
@@ -41,7 +41,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Destructive Button
 
 ```tsx
-<button className="bg-destructive text-destructive-foreground px-4 py-2 rounded-md hover:bg-destructive/90 transition-colors">
+<button className="hover:bg-destructive/90 rounded-md bg-destructive px-4 py-2 text-destructive-foreground transition-colors">
   Delete
 </button>
 ```
@@ -49,9 +49,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Link Button
 
 ```tsx
-<button className="text-primary underline-offset-4 hover:underline">
-  Link
-</button>
+<button className="text-primary underline-offset-4 hover:underline">Link</button>
 ```
 
 ---
@@ -61,7 +59,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Small
 
 ```tsx
-<button className="bg-primary text-primary-foreground px-3 py-1.5 text-sm rounded-md hover:bg-primary/90">
+<button className="hover:bg-primary/90 rounded-md bg-primary px-3 py-1.5 text-sm text-primary-foreground">
   Small
 </button>
 ```
@@ -69,7 +67,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Default
 
 ```tsx
-<button className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90">
+<button className="hover:bg-primary/90 rounded-md bg-primary px-4 py-2 text-primary-foreground">
   Default
 </button>
 ```
@@ -77,7 +75,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Large
 
 ```tsx
-<button className="bg-primary text-primary-foreground px-6 py-3 text-lg rounded-md hover:bg-primary/90">
+<button className="hover:bg-primary/90 rounded-md bg-primary px-6 py-3 text-lg text-primary-foreground">
   Large
 </button>
 ```
@@ -91,7 +89,7 @@ Complete button styling guide for Tailwind CSS projects.
 ```tsx
 <button
   disabled
-  className="bg-primary text-primary-foreground px-4 py-2 rounded-md opacity-50 cursor-not-allowed"
+  className="cursor-not-allowed rounded-md bg-primary px-4 py-2 text-primary-foreground opacity-50"
 >
   Disabled
 </button>
@@ -102,7 +100,7 @@ Complete button styling guide for Tailwind CSS projects.
 ```tsx
 <button
   disabled
-  className="bg-primary text-primary-foreground px-4 py-2 rounded-md opacity-75 cursor-wait flex items-center gap-2"
+  className="flex cursor-wait items-center gap-2 rounded-md bg-primary px-4 py-2 text-primary-foreground opacity-75"
 >
   <svg className="h-4 w-4 animate-spin">⟳</svg>
   Loading...
@@ -112,7 +110,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Success
 
 ```tsx
-<button className="bg-success text-success-foreground px-4 py-2 rounded-md hover:bg-success/90 flex items-center gap-2">
+<button className="bg-success text-success-foreground hover:bg-success/90 flex items-center gap-2 rounded-md px-4 py-2">
   <svg className="h-4 w-4">✓</svg>
   Success
 </button>
@@ -125,7 +123,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Icon Left
 
 ```tsx
-<button className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 flex items-center gap-2">
+<button className="hover:bg-primary/90 flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-primary-foreground">
   <svg className="h-4 w-4">📥</svg>
   Download
 </button>
@@ -134,7 +132,7 @@ Complete button styling guide for Tailwind CSS projects.
 ### Icon Right
 
 ```tsx
-<button className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 flex items-center gap-2">
+<button className="hover:bg-primary/90 flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-primary-foreground">
   Continue
   <svg className="h-4 w-4">→</svg>
 </button>
@@ -144,7 +142,7 @@ Complete button styling guide for Tailwind CSS projects.
 
 ```tsx
 <button
-  className="bg-primary text-primary-foreground h-10 w-10 rounded-md hover:bg-primary/90 flex items-center justify-center"
+  className="hover:bg-primary/90 flex h-10 w-10 items-center justify-center rounded-md bg-primary text-primary-foreground"
   aria-label="Settings"
 >
   <svg className="h-5 w-5">⚙️</svg>
@@ -159,13 +157,13 @@ Complete button styling guide for Tailwind CSS projects.
 
 ```tsx
 <div className="inline-flex rounded-md shadow-sm">
-  <button className="px-4 py-2 bg-primary text-primary-foreground rounded-l-md hover:bg-primary/90">
+  <button className="hover:bg-primary/90 rounded-l-md bg-primary px-4 py-2 text-primary-foreground">
     Left
   </button>
-  <button className="px-4 py-2 bg-primary text-primary-foreground border-l border-primary-foreground/20 hover:bg-primary/90">
+  <button className="border-primary-foreground/20 hover:bg-primary/90 border-l bg-primary px-4 py-2 text-primary-foreground">
     Middle
   </button>
-  <button className="px-4 py-2 bg-primary text-primary-foreground border-l border-primary-foreground/20 rounded-r-md hover:bg-primary/90">
+  <button className="border-primary-foreground/20 hover:bg-primary/90 rounded-r-md border-l bg-primary px-4 py-2 text-primary-foreground">
     Right
   </button>
 </div>
@@ -174,10 +172,8 @@ Complete button styling guide for Tailwind CSS projects.
 ### Segmented Control
 
 ```tsx
-<div className="inline-flex gap-1 p-1 bg-muted rounded-lg">
-  <button className="px-4 py-2 text-sm font-medium bg-background rounded-md shadow">
-    Active
-  </button>
+<div className="inline-flex gap-1 rounded-lg bg-muted p-1">
+  <button className="rounded-md bg-background px-4 py-2 text-sm font-medium shadow">Active</button>
   <button className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">
     Inactive
   </button>
@@ -192,7 +188,7 @@ Complete button styling guide for Tailwind CSS projects.
 ## Full Width Buttons
 
 ```tsx
-<button className="w-full bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90">
+<button className="hover:bg-primary/90 w-full rounded-md bg-primary px-4 py-2 text-primary-foreground">
   Full Width Button
 </button>
 ```
@@ -202,7 +198,7 @@ Complete button styling guide for Tailwind CSS projects.
 ## Floating Action Button (FAB)
 
 ```tsx
-<button className="fixed bottom-8 right-8 h-14 w-14 bg-primary text-primary-foreground rounded-full shadow-lg hover:bg-primary/90 hover:shadow-xl transition-all flex items-center justify-center">
+<button className="hover:bg-primary/90 fixed bottom-8 right-8 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-all hover:shadow-xl">
   <svg className="h-6 w-6">+</svg>
 </button>
 ```

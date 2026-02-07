@@ -44,12 +44,8 @@ Text hierarchy and typography patterns for Tailwind CSS projects.
 
 ```tsx
 <div>
-  <h2 className="text-3xl font-bold mb-2">
-    Main Heading
-  </h2>
-  <p className="text-lg text-muted-foreground">
-    Supporting subtitle or description
-  </p>
+  <h2 className="mb-2 text-3xl font-bold">Main Heading</h2>
+  <p className="text-lg text-muted-foreground">Supporting subtitle or description</p>
 </div>
 ```
 
@@ -124,11 +120,11 @@ Text hierarchy and typography patterns for Tailwind CSS projects.
 ```tsx
 <ul className="space-y-3">
   <li className="flex items-start">
-    <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0">✓</svg>
+    <svg className="mr-2 mt-0.5 h-5 w-5 flex-shrink-0 text-primary">✓</svg>
     <span className="text-muted-foreground">Feature one with longer description</span>
   </li>
   <li className="flex items-start">
-    <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0">✓</svg>
+    <svg className="mr-2 mt-0.5 h-5 w-5 flex-shrink-0 text-primary">✓</svg>
     <span className="text-muted-foreground">Feature two</span>
   </li>
 </ul>
@@ -137,7 +133,7 @@ Text hierarchy and typography patterns for Tailwind CSS projects.
 ### Ordered List
 
 ```tsx
-<ol className="space-y-2 text-muted-foreground list-decimal list-inside">
+<ol className="list-inside list-decimal space-y-2 text-muted-foreground">
   <li>First step</li>
   <li>Second step</li>
   <li>Third step</li>
@@ -153,10 +149,10 @@ Text hierarchy and typography patterns for Tailwind CSS projects.
 ```tsx
 <p>
   This is a paragraph with an{' '}
-  <a href="#" className="text-primary hover:underline underline-offset-4">
+  <a href="#" className="text-primary underline-offset-4 hover:underline">
     inline link
-  </a>
-  {' '}in the middle.
+  </a>{' '}
+  in the middle.
 </p>
 ```
 
@@ -165,7 +161,7 @@ Text hierarchy and typography patterns for Tailwind CSS projects.
 ```tsx
 <a
   href="#"
-  className="text-primary hover:text-primary/80 underline underline-offset-4 transition-colors"
+  className="hover:text-primary/80 text-primary underline underline-offset-4 transition-colors"
 >
   Standalone link
 </a>
@@ -176,7 +172,7 @@ Text hierarchy and typography patterns for Tailwind CSS projects.
 ```tsx
 <a
   href="#"
-  className="inline-flex items-center gap-1 text-primary hover:underline underline-offset-4"
+  className="inline-flex items-center gap-1 text-primary underline-offset-4 hover:underline"
 >
   <span>Learn more</span>
   <svg className="h-4 w-4">→</svg>
@@ -190,9 +186,7 @@ Text hierarchy and typography patterns for Tailwind CSS projects.
 ```tsx
 <blockquote className="border-l-4 border-primary pl-4 italic text-muted-foreground">
   "This is a quote that provides emphasis or attribution to a statement."
-  <footer className="mt-2 text-sm not-italic">
-    — Author Name
-  </footer>
+  <footer className="mt-2 text-sm not-italic">— Author Name</footer>
 </blockquote>
 ```
 
@@ -204,16 +198,17 @@ Text hierarchy and typography patterns for Tailwind CSS projects.
 
 ```tsx
 <p>
-  Use the <code className="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">className</code> attribute.
+  Use the <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">className</code>{' '}
+  attribute.
 </p>
 ```
 
 ### Code Block
 
 ```tsx
-<pre className="bg-muted p-4 rounded-lg overflow-x-auto">
-  <code className="text-sm font-mono">
-{`function hello() {
+<pre className="overflow-x-auto rounded-lg bg-muted p-4">
+  <code className="font-mono text-sm">
+    {`function hello() {
   console.log("Hello World");
 }`}
   </code>
@@ -253,7 +248,7 @@ Text hierarchy and typography patterns for Tailwind CSS projects.
 ```tsx
 <button className="relative">
   Notifications
-  <span className="absolute -top-1 -right-1 h-5 w-5 bg-destructive text-destructive-foreground rounded-full text-xs flex items-center justify-center">
+  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-destructive text-xs text-destructive-foreground">
     3
   </span>
 </button>

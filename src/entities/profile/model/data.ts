@@ -2,9 +2,9 @@ export const profile = {
   name: 'Đặng Nguyên',
   title: 'Full-Stack Developer • Tech Enthusiast • Problem Solver',
   bio: [
-    "Xin chào! Tôi là Đặng Nguyên, một Full-Stack Developer đam mê công nghệ và luôn tìm kiếm những thử thách mới.",
-    "Với kinh nghiệm trong việc xây dựng ứng dụng web hiện đại, tôi chuyên về React, Node.js, và TypeScript. Tôi tin vào việc viết code sạch, dễ maintain và scalable.",
-    "Khi không code, tôi thích khám phá các công nghệ mới, đọc blog tech, và chia sẻ kiến thức với cộng đồng."
+    'Xin chào! Tôi là Đặng Nguyên, một Full-Stack Developer đam mê công nghệ và luôn tìm kiếm những thử thách mới.',
+    'Với kinh nghiệm trong việc xây dựng ứng dụng web hiện đại, tôi chuyên về React, Node.js, và TypeScript. Tôi tin vào việc viết code sạch, dễ maintain và scalable.',
+    'Khi không code, tôi thích khám phá các công nghệ mới, đọc blog tech, và chia sẻ kiến thức với cộng đồng.',
   ],
   location: 'Vietnam',
   status: 'Available for work',

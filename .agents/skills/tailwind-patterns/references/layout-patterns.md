@@ -11,12 +11,11 @@ Responsive layout patterns for Tailwind CSS projects.
 Maximum width with responsive horizontal padding:
 
 ```tsx
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  {/* Page content */}
-</div>
+<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{/* Page content */}</div>
 ```
 
 **Breakdown**:
+
 - `max-w-7xl` - Maximum width 1280px
 - `mx-auto` - Center horizontally
 - `px-4 sm:px-6 lg:px-8` - Responsive padding (16px → 24px → 32px)
@@ -44,9 +43,7 @@ Maximum width with responsive horizontal padding:
 
 ```tsx
 <section className="w-full bg-muted">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    {/* Section content */}
-  </div>
+  <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">{/* Section content */}</div>
 </section>
 ```
 
@@ -58,13 +55,12 @@ Maximum width with responsive horizontal padding:
 
 ```tsx
 <section className="py-16 sm:py-24">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Section content */}
-  </div>
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{/* Section content */}</div>
 </section>
 ```
 
 **Breakdown**:
+
 - `py-16` - 64px vertical padding (mobile)
 - `sm:py-24` - 96px vertical padding (tablet+)
 
@@ -89,24 +85,18 @@ Maximum width with responsive horizontal padding:
 ```tsx
 <div>
   {/* Light background */}
-  <section className="py-16 sm:py-24 bg-background">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Content */}
-    </div>
+  <section className="bg-background py-16 sm:py-24">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{/* Content */}</div>
   </section>
 
   {/* Accent background */}
-  <section className="py-16 sm:py-24 bg-muted">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Content */}
-    </div>
+  <section className="bg-muted py-16 sm:py-24">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{/* Content */}</div>
   </section>
 
   {/* Light background */}
-  <section className="py-16 sm:py-24 bg-background">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Content */}
-    </div>
+  <section className="bg-background py-16 sm:py-24">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{/* Content */}</div>
   </section>
 </div>
 ```
@@ -140,11 +130,14 @@ Automatically adjusts number of columns based on available space:
 
 ```tsx
 <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
-  {items.map(item => <Card key={item.id} {...item} />)}
+  {items.map((item) => (
+    <Card key={item.id} {...item} />
+  ))}
 </div>
 ```
 
 **When to use**:
+
 - Unknown number of items
 - Items should fill available space
 - Prefer automatic column calculation
@@ -155,7 +148,9 @@ Similar to auto-fit, but creates empty columns if space available:
 
 ```tsx
 <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
-  {items.map(item => <Card key={item.id} {...item} />)}
+  {items.map((item) => (
+    <Card key={item.id} {...item} />
+  ))}
 </div>
 ```
 
@@ -274,20 +269,17 @@ Similar to auto-fit, but creates empty columns if space available:
 ### Sidebar + Main Content
 
 ```tsx
-<div className="flex flex-col lg:flex-row gap-8">
+<div className="flex flex-col gap-8 lg:flex-row">
   {/* Sidebar */}
-  <aside className="lg:w-64 flex-shrink-0">
-    {/* Sidebar content */}
-  </aside>
+  <aside className="flex-shrink-0 lg:w-64">{/* Sidebar content */}</aside>
 
   {/* Main content */}
-  <main className="flex-1 min-w-0">
-    {/* Main content */}
-  </main>
+  <main className="min-w-0 flex-1">{/* Main content */}</main>
 </div>
 ```
 
 **Breakdown**:
+
 - `lg:w-64` - Fixed sidebar width on desktop
 - `flex-shrink-0` - Prevent sidebar from shrinking
 - `flex-1` - Main content fills remaining space
@@ -296,41 +288,33 @@ Similar to auto-fit, but creates empty columns if space available:
 ### Reversed Sidebar (Content First on Mobile)
 
 ```tsx
-<div className="flex flex-col lg:flex-row-reverse gap-8">
+<div className="flex flex-col gap-8 lg:flex-row-reverse">
   {/* Sidebar (appears second on mobile) */}
-  <aside className="lg:w-64 flex-shrink-0">
-    {/* Sidebar content */}
-  </aside>
+  <aside className="flex-shrink-0 lg:w-64">{/* Sidebar content */}</aside>
 
   {/* Main content (appears first on mobile) */}
-  <main className="flex-1 min-w-0">
-    {/* Main content */}
-  </main>
+  <main className="min-w-0 flex-1">{/* Main content */}</main>
 </div>
 ```
 
 ### Split Content (50/50)
 
 ```tsx
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-  <div>
-    {/* Left content */}
-  </div>
-  <div>
-    {/* Right content */}
-  </div>
+<div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
+  <div>{/* Left content */}</div>
+  <div>{/* Right content */}</div>
 </div>
 ```
 
 ### Image + Text Split
 
 ```tsx
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+<div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
   <div>
     <img src="/image.jpg" alt="" className="rounded-lg" />
   </div>
   <div>
-    <h2 className="text-3xl font-bold mb-4">Heading</h2>
+    <h2 className="mb-4 text-3xl font-bold">Heading</h2>
     <p className="text-muted-foreground">Description...</p>
   </div>
 </div>
@@ -343,7 +327,7 @@ Similar to auto-fit, but creates empty columns if space available:
 ### Equal Columns
 
 ```tsx
-<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div className="grid grid-cols-1 gap-8 md:grid-cols-3">
   <div>{/* Column 1 */}</div>
   <div>{/* Column 2 */}</div>
   <div>{/* Column 3 */}</div>
@@ -353,7 +337,7 @@ Similar to auto-fit, but creates empty columns if space available:
 ### Sidebar + Content + Sidebar
 
 ```tsx
-<div className="grid grid-cols-1 lg:grid-cols-[250px_1fr_250px] gap-8">
+<div className="grid grid-cols-1 gap-8 lg:grid-cols-[250px_1fr_250px]">
   <aside>{/* Left sidebar */}</aside>
   <main>{/* Main content */}</main>
   <aside>{/* Right sidebar */}</aside>
@@ -367,8 +351,8 @@ Similar to auto-fit, but creates empty columns if space available:
 CSS columns-based masonry (no JavaScript):
 
 ```tsx
-<div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-  {items.map(item => (
+<div className="columns-1 gap-6 space-y-6 md:columns-2 lg:columns-3">
+  {items.map((item) => (
     <div key={item.id} className="break-inside-avoid">
       <Card {...item} />
     </div>
@@ -385,10 +369,8 @@ CSS columns-based masonry (no JavaScript):
 ### Sticky Header
 
 ```tsx
-<header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur border-b">
-  <div className="max-w-7xl mx-auto px-4 py-4">
-    {/* Header content */}
-  </div>
+<header className="bg-background/95 sticky top-0 z-50 w-full border-b backdrop-blur">
+  <div className="mx-auto max-w-7xl px-4 py-4">{/* Header content */}</div>
 </header>
 ```
 
@@ -396,12 +378,8 @@ CSS columns-based masonry (no JavaScript):
 
 ```tsx
 <div className="flex gap-8">
-  <aside className="sticky top-4 h-fit">
-    {/* Sidebar stays visible while scrolling */}
-  </aside>
-  <main className="flex-1">
-    {/* Long scrolling content */}
-  </main>
+  <aside className="sticky top-4 h-fit">{/* Sidebar stays visible while scrolling */}</aside>
+  <main className="flex-1">{/* Long scrolling content */}</main>
 </div>
 ```
 
@@ -467,8 +445,8 @@ CSS columns-based masonry (no JavaScript):
 ```tsx
 <div className="overflow-x-auto">
   <div className="flex gap-4 pb-4">
-    {items.map(item => (
-      <div key={item.id} className="flex-shrink-0 w-64">
+    {items.map((item) => (
+      <div key={item.id} className="w-64 flex-shrink-0">
         <Card {...item} />
       </div>
     ))}
@@ -527,15 +505,15 @@ Standard z-index scale for layering:
 
 ## Common Patterns Summary
 
-| Pattern | Classes |
-|---------|---------|
-| **Page container** | `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` |
-| **Section spacing** | `py-16 sm:py-24` |
+| Pattern             | Classes                                                |
+| ------------------- | ------------------------------------------------------ |
+| **Page container**  | `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`               |
+| **Section spacing** | `py-16 sm:py-24`                                       |
 | **Responsive grid** | `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6` |
-| **Center content** | `flex items-center justify-center` |
-| **Sidebar layout** | `flex flex-col lg:flex-row gap-8` |
-| **Sticky header** | `sticky top-0 z-50` |
-| **Full height** | `min-h-screen flex flex-col` |
+| **Center content**  | `flex items-center justify-center`                     |
+| **Sidebar layout**  | `flex flex-col lg:flex-row gap-8`                      |
+| **Sticky header**   | `sticky top-0 z-50`                                    |
+| **Full height**     | `min-h-screen flex flex-col`                           |
 
 ---
 

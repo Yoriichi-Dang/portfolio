@@ -9,34 +9,34 @@
  */
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-muted/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-muted/50 border-t border-border">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div className="mb-8 grid grid-cols-2 gap-8 md:grid-cols-4">
           {/* Column 1: Product */}
           <div>
-            <h4 className="font-semibold mb-4">Product</h4>
+            <h4 className="mb-4 font-semibold">Product</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="/features" className="hover:text-primary transition-colors">
+                <a href="/features" className="transition-colors hover:text-primary">
                   Features
                 </a>
               </li>
               <li>
-                <a href="/pricing" className="hover:text-primary transition-colors">
+                <a href="/pricing" className="transition-colors hover:text-primary">
                   Pricing
                 </a>
               </li>
               <li>
-                <a href="/roadmap" className="hover:text-primary transition-colors">
+                <a href="/roadmap" className="transition-colors hover:text-primary">
                   Roadmap
                 </a>
               </li>
               <li>
-                <a href="/changelog" className="hover:text-primary transition-colors">
+                <a href="/changelog" className="transition-colors hover:text-primary">
                   Changelog
                 </a>
               </li>
@@ -45,25 +45,25 @@ export function Footer() {
 
           {/* Column 2: Company */}
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="mb-4 font-semibold">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="/about" className="hover:text-primary transition-colors">
+                <a href="/about" className="transition-colors hover:text-primary">
                   About
                 </a>
               </li>
               <li>
-                <a href="/blog" className="hover:text-primary transition-colors">
+                <a href="/blog" className="transition-colors hover:text-primary">
                   Blog
                 </a>
               </li>
               <li>
-                <a href="/careers" className="hover:text-primary transition-colors">
+                <a href="/careers" className="transition-colors hover:text-primary">
                   Careers
                 </a>
               </li>
               <li>
-                <a href="/contact" className="hover:text-primary transition-colors">
+                <a href="/contact" className="transition-colors hover:text-primary">
                   Contact
                 </a>
               </li>
@@ -72,25 +72,25 @@ export function Footer() {
 
           {/* Column 3: Resources */}
           <div>
-            <h4 className="font-semibold mb-4">Resources</h4>
+            <h4 className="mb-4 font-semibold">Resources</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="/docs" className="hover:text-primary transition-colors">
+                <a href="/docs" className="transition-colors hover:text-primary">
                   Documentation
                 </a>
               </li>
               <li>
-                <a href="/support" className="hover:text-primary transition-colors">
+                <a href="/support" className="transition-colors hover:text-primary">
                   Support
                 </a>
               </li>
               <li>
-                <a href="/api" className="hover:text-primary transition-colors">
+                <a href="/api" className="transition-colors hover:text-primary">
                   API Reference
                 </a>
               </li>
               <li>
-                <a href="/status" className="hover:text-primary transition-colors">
+                <a href="/status" className="transition-colors hover:text-primary">
                   System Status
                 </a>
               </li>
@@ -99,25 +99,25 @@ export function Footer() {
 
           {/* Column 4: Legal */}
           <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
+            <h4 className="mb-4 font-semibold">Legal</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="/privacy" className="hover:text-primary transition-colors">
+                <a href="/privacy" className="transition-colors hover:text-primary">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="/terms" className="hover:text-primary transition-colors">
+                <a href="/terms" className="transition-colors hover:text-primary">
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="/security" className="hover:text-primary transition-colors">
+                <a href="/security" className="transition-colors hover:text-primary">
                   Security
                 </a>
               </li>
               <li>
-                <a href="/cookies" className="hover:text-primary transition-colors">
+                <a href="/cookies" className="transition-colors hover:text-primary">
                   Cookie Policy
                 </a>
               </li>
@@ -126,7 +126,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
           {/* Copyright */}
           <p className="text-sm text-muted-foreground">
             © {currentYear} Your Company. All rights reserved.
@@ -138,7 +138,7 @@ export function Footer() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground transition-colors hover:text-primary"
               aria-label="Twitter"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -149,18 +149,22 @@ export function Footer() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground transition-colors hover:text-primary"
               aria-label="GitHub"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                <path
+                  fillRule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  clipRule="evenodd"
+                />
               </svg>
             </a>
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground transition-colors hover:text-primary"
               aria-label="LinkedIn"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -171,7 +175,7 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
 /**
@@ -179,12 +183,12 @@ export function Footer() {
  */
 
 export function SimpleFooter() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-muted/50 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+    <footer className="bg-muted/50 mt-auto border-t border-border">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           {/* Copyright */}
           <p className="text-sm text-muted-foreground">
             © {currentYear} Your Company. All rights reserved.
@@ -192,20 +196,29 @@ export function SimpleFooter() {
 
           {/* Links */}
           <nav className="flex gap-6">
-            <a href="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <a
+              href="/privacy"
+              className="text-sm text-muted-foreground transition-colors hover:text-primary"
+            >
               Privacy
             </a>
-            <a href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <a
+              href="/terms"
+              className="text-sm text-muted-foreground transition-colors hover:text-primary"
+            >
               Terms
             </a>
-            <a href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <a
+              href="/contact"
+              className="text-sm text-muted-foreground transition-colors hover:text-primary"
+            >
               Contact
             </a>
           </nav>
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
 /**
@@ -213,25 +226,25 @@ export function SimpleFooter() {
  */
 
 export function FooterWithNewsletter() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-muted/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-muted/50 border-t border-border">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Newsletter Section */}
-        <div className="bg-card border border-border rounded-lg p-8 mb-12">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-bold mb-2">Stay updated</h3>
-            <p className="text-muted-foreground mb-6">
+        <div className="mb-12 rounded-lg border border-border bg-card p-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h3 className="mb-2 text-2xl font-bold">Stay updated</h3>
+            <p className="mb-6 text-muted-foreground">
               Get the latest news and updates delivered to your inbox.
             </p>
-            <form className="flex gap-2 max-w-md mx-auto">
+            <form className="mx-auto flex max-w-md gap-2">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex-1 rounded-md border border-border bg-background px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <button className="bg-primary text-primary-foreground px-6 py-2 rounded-md hover:bg-primary/90 transition-colors whitespace-nowrap">
+              <button className="hover:bg-primary/90 whitespace-nowrap rounded-md bg-primary px-6 py-2 text-primary-foreground transition-colors">
                 Subscribe
               </button>
             </form>
@@ -239,7 +252,7 @@ export function FooterWithNewsletter() {
         </div>
 
         {/* Rest of footer content */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-sm text-muted-foreground">
             © {currentYear} Your Company. All rights reserved.
           </p>
@@ -254,5 +267,5 @@ export function FooterWithNewsletter() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a personal portfolio and blog built with Astro 5.x, featuring a hybrid architecture combining static generation (Astro) with client-side interactivity (React 19). Content is managed via TinaCMS with a local-first approach.
 
 **Key Technologies:**
+
 - Astro 5.17+ (SSG framework)
 - React 19 (client components)
 - TinaCMS 3.x (headless CMS, local mode)
@@ -40,11 +41,13 @@ npm run astro -- <command>
 ### Hybrid Rendering Strategy
 
 **Static Components (Astro):** Use for SEO-critical, non-interactive content
+
 - About, Skills, Recent Posts, Contact sections
 - Blog index and post layouts
 - Header, Footer
 
 **Client Components (React with `client:load`):** Use for interactive features
+
 - Hero section (Framer Motion animations)
 - Projects section (hover effects, scroll animations)
 - Any component requiring client-side state or events
@@ -89,6 +92,7 @@ tina/
 ### Content Collections
 
 Blog posts use Astro Content Collections with glob loader:
+
 - Location: `src/content/blog/`
 - Format: Markdown with frontmatter
 - Schema enforced by `src/content.config.ts`
@@ -109,39 +113,48 @@ Blog posts use Astro Content Collections with glob loader:
    - Trade-offs: Auto WebP conversion, responsive srcsets, slower builds
 
 **Schema supports both:**
+
 ```typescript
-heroImage: z.union([z.string(), image()]).optional()
+heroImage: z.union([z.string(), image()]).optional();
 ```
 
 **Type detection pattern:**
+
 ```astro
 ---
 const isPublicImage = typeof heroImage === 'string';
 ---
-{isPublicImage ? (
-  <img src={heroImage} alt={title} />
-) : (
-  <Image src={heroImage} alt={title} width={1020} height={510} />
-)}
+
+{
+  isPublicImage ? (
+    <img src={heroImage} alt={title} />
+  ) : (
+    <Image src={heroImage} alt={title} width={1020} height={510} />
+  )
+}
 ```
 
 **When to use which:**
+
 - TinaCMS uploads → automatic → `public/uploads/`
 - Production-critical images → manual → `src/assets/`
 
 ## TinaCMS Integration
 
 **Local Mode (No Cloud):**
+
 - No authentication required for local development
 - Admin UI: `http://localhost:4321/admin/index.html`
 - Media uploads go to `public/uploads/`
 - Content saved directly to `src/content/blog/` as Markdown files
 
 **Configuration:** `tina/config.ts`
+
 - Schema mirrors Astro content collection schema
 - Fields: title, description, pubDate, updatedDate, heroImage, tags, draft, body
 
 **Build Process:**
+
 - `tinacms build` generates admin UI in `public/admin/`
 - Must run before `astro build` (handled by npm build script)
 
@@ -150,14 +163,17 @@ const isPublicImage = typeof heroImage === 'string';
 **Tailwind Configuration:** Standard setup, content scanning includes all Astro/React/MDX files
 
 **Responsive Breakpoints:**
+
 - Mobile-first approach
 - Breakpoints: `md:` (768px), `lg:` (1024px), `xl:` (1280px)
 
 **Dark Mode:**
+
 - Implemented via Tailwind's `dark:` classes
 - No toggle implemented yet (system preference or manual class on `<html>`)
 
 **Color System:**
+
 - Light: white, gray-50, gray-100 backgrounds; gray-700/900 text
 - Dark: gray-900, gray-800 backgrounds; gray-300/white text
 - Accents: blue-600/purple-600 (light), blue-400/purple-400 (dark)
@@ -165,12 +181,14 @@ const isPublicImage = typeof heroImage === 'string';
 ## React + Framer Motion Patterns
 
 **Animation Best Practices:**
+
 - Import only needed components: `import { motion } from 'framer-motion'`
 - Use `initial`, `animate`, `transition` props for entrance animations
 - `whileInView` for scroll-triggered animations
 - Keep animations subtle (0.3-0.5s duration)
 
 **Client Directive:**
+
 - Always use `client:load` for Framer Motion components
 - Import in Astro: `import HeroSection from '@/components/home/HeroSection'`
 - Render: `<HeroSection client:load />`
@@ -187,10 +205,12 @@ const isPublicImage = typeof heroImage === 'string';
 **Build Output:** `./dist/` (static site)
 
 **Build Order:**
+
 1. `tinacms build` → generates admin UI
 2. `astro build` → generates static site
 
 **Environment Variables:**
+
 - Not required for local development
 - `.env.example` shows optional Tina Cloud config
 - `PUBLIC_*` prefix for client-side env vars
@@ -200,12 +220,14 @@ const isPublicImage = typeof heroImage === 'string';
 ### Adding a New Blog Post
 
 **Via TinaCMS (Recommended):**
+
 1. Run `npm run dev`
 2. Open `http://localhost:4321/admin/index.html`
 3. Create new post, upload images (auto-saved to `public/uploads/`)
 4. Post saved to `src/content/blog/`
 
 **Manually:**
+
 1. Create `src/content/blog/your-post.md`
 2. Add required frontmatter: title, description, pubDate
 3. Add optional: updatedDate, heroImage, tags, draft
@@ -221,6 +243,7 @@ const isPublicImage = typeof heroImage === 'string';
 ### Converting Astro Component to React
 
 When you need client-side interactivity:
+
 1. Change `.astro` → `.tsx`
 2. Convert Astro syntax to JSX
 3. Add Framer Motion if animations needed
@@ -230,6 +253,7 @@ When you need client-side interactivity:
 ### Optimizing Public Images
 
 To move TinaCMS uploads to optimized assets:
+
 ```bash
 # 1. Move file
 mv public/uploads/image.jpg src/assets/blog/image.jpg
@@ -245,6 +269,7 @@ mv public/uploads/image.jpg src/assets/blog/image.jpg
 **Main Branch:** `main` (use for PRs)
 
 **Ignored Directories:**
+
 - `.astro/` (build cache)
 - `dist/` (build output)
 - `node_modules/`
@@ -270,5 +295,6 @@ mv public/uploads/image.jpg src/assets/blog/image.jpg
 ## Project-Specific Documentation
 
 Detailed guides available in repository:
+
 - `HYBRID_IMAGE_SETUP.md` - Complete image handling documentation
 - `PORTFOLIO_HOME_GUIDE.md` - Homepage architecture and customization guide

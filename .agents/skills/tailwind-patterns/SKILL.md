@@ -47,13 +47,13 @@ description: |
 
 Consistent spacing prevents design drift:
 
-| Usage | Classes | Output |
-|-------|---------|--------|
-| **Tight spacing** | `gap-2 p-2 space-y-2` | 0.5rem (8px) |
-| **Standard spacing** | `gap-4 p-4 space-y-4` | 1rem (16px) |
-| **Comfortable** | `gap-6 p-6 space-y-6` | 1.5rem (24px) |
-| **Loose** | `gap-8 p-8 space-y-8` | 2rem (32px) |
-| **Section spacing** | `py-16 sm:py-24` | 4rem/6rem (64px/96px) |
+| Usage                | Classes               | Output                |
+| -------------------- | --------------------- | --------------------- |
+| **Tight spacing**    | `gap-2 p-2 space-y-2` | 0.5rem (8px)          |
+| **Standard spacing** | `gap-4 p-4 space-y-4` | 1rem (16px)           |
+| **Comfortable**      | `gap-6 p-6 space-y-6` | 1.5rem (24px)         |
+| **Loose**            | `gap-8 p-8 space-y-8` | 2rem (32px)           |
+| **Section spacing**  | `py-16 sm:py-24`      | 4rem/6rem (64px/96px) |
 
 **Standard Pattern**: Use increments of 4 (4, 6, 8, 12, 16, 24)
 
@@ -63,14 +63,14 @@ Consistent spacing prevents design drift:
 
 Mobile-first approach (base styles = mobile, add larger breakpoints):
 
-| Breakpoint | Min Width | Pattern | Example |
-|------------|-----------|---------|---------|
-| **Base** | 0px | No prefix | `text-base` |
-| **sm** | 640px | `sm:` | `sm:text-lg` |
-| **md** | 768px | `md:` | `md:grid-cols-2` |
-| **lg** | 1024px | `lg:` | `lg:px-8` |
-| **xl** | 1280px | `xl:` | `xl:max-w-7xl` |
-| **2xl** | 1536px | `2xl:` | `2xl:text-6xl` |
+| Breakpoint | Min Width | Pattern   | Example          |
+| ---------- | --------- | --------- | ---------------- |
+| **Base**   | 0px       | No prefix | `text-base`      |
+| **sm**     | 640px     | `sm:`     | `sm:text-lg`     |
+| **md**     | 768px     | `md:`     | `md:grid-cols-2` |
+| **lg**     | 1024px    | `lg:`     | `lg:px-8`        |
+| **xl**     | 1280px    | `xl:`     | `xl:max-w-7xl`   |
+| **2xl**    | 1536px    | `2xl:`    | `2xl:text-6xl`   |
 
 ```tsx
 // Mobile: 1 column, Tablet: 2 columns, Desktop: 3 columns
@@ -84,12 +84,11 @@ Mobile-first approach (base styles = mobile, add larger breakpoints):
 ### Standard Page Container
 
 ```tsx
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  {/* content */}
-</div>
+<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{/* content */}</div>
 ```
 
 **Variations**:
+
 - `max-w-4xl` - Narrow content (blog posts)
 - `max-w-5xl` - Medium content
 - `max-w-6xl` - Wide content
@@ -99,9 +98,7 @@ Mobile-first approach (base styles = mobile, add larger breakpoints):
 
 ```tsx
 <section className="py-16 sm:py-24">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* content */}
-  </div>
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{/* content */}</div>
 </section>
 ```
 
@@ -112,8 +109,8 @@ Mobile-first approach (base styles = mobile, add larger breakpoints):
 ### Basic Card
 
 ```tsx
-<div className="bg-card text-card-foreground rounded-lg border border-border p-6">
-  <h3 className="text-lg font-semibold mb-2">Card Title</h3>
+<div className="rounded-lg border border-border bg-card p-6 text-card-foreground">
+  <h3 className="mb-2 text-lg font-semibold">Card Title</h3>
   <p className="text-muted-foreground">Card description goes here.</p>
 </div>
 ```
@@ -121,11 +118,11 @@ Mobile-first approach (base styles = mobile, add larger breakpoints):
 ### Feature Card with Icon
 
 ```tsx
-<div className="bg-card text-card-foreground rounded-lg border border-border p-6 hover:shadow-lg transition-shadow">
-  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+<div className="rounded-lg border border-border bg-card p-6 text-card-foreground transition-shadow hover:shadow-lg">
+  <div className="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
     {/* Icon */}
   </div>
-  <h3 className="text-lg font-semibold mb-2">Feature Title</h3>
+  <h3 className="mb-2 text-lg font-semibold">Feature Title</h3>
   <p className="text-muted-foreground">Feature description.</p>
 </div>
 ```
@@ -133,11 +130,13 @@ Mobile-first approach (base styles = mobile, add larger breakpoints):
 ### Pricing Card
 
 ```tsx
-<div className="bg-card text-card-foreground rounded-lg border-2 border-border p-8 relative">
-  <div className="text-sm font-semibold text-primary mb-2">Pro Plan</div>
-  <div className="text-4xl font-bold mb-1">$29<span className="text-lg text-muted-foreground">/mo</span></div>
-  <p className="text-muted-foreground mb-6">For growing teams</p>
-  <button className="w-full bg-primary text-primary-foreground py-2 rounded-md hover:bg-primary/90">
+<div className="relative rounded-lg border-2 border-border bg-card p-8 text-card-foreground">
+  <div className="mb-2 text-sm font-semibold text-primary">Pro Plan</div>
+  <div className="mb-1 text-4xl font-bold">
+    $29<span className="text-lg text-muted-foreground">/mo</span>
+  </div>
+  <p className="mb-6 text-muted-foreground">For growing teams</p>
+  <button className="hover:bg-primary/90 w-full rounded-md bg-primary py-2 text-primary-foreground">
     Get Started
   </button>
 </div>
@@ -152,8 +151,10 @@ See `references/card-patterns.md` for more variants.
 ### Auto-Responsive Grid
 
 ```tsx
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  {items.map(item => <Card key={item.id} {...item} />)}
+<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+  {items.map((item) => (
+    <Card key={item.id} {...item} />
+  ))}
 </div>
 ```
 
@@ -168,8 +169,8 @@ See `references/card-patterns.md` for more variants.
 ### Masonry-Style Grid
 
 ```tsx
-<div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-  {items.map(item => (
+<div className="columns-1 gap-6 space-y-6 md:columns-2 lg:columns-3">
+  {items.map((item) => (
     <div key={item.id} className="break-inside-avoid">
       <Card {...item} />
     </div>
@@ -209,6 +210,7 @@ See `references/card-patterns.md` for more variants.
 ```
 
 **Size Variants**:
+
 - Small: `px-3 py-1.5 text-sm`
 - Default: `px-4 py-2`
 - Large: `px-6 py-3 text-lg`
@@ -229,7 +231,7 @@ See `references/button-patterns.md` for full reference.
   <input
     id="email"
     type="email"
-    className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+    className="w-full rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
     placeholder="you@example.com"
   />
 </div>
@@ -238,7 +240,7 @@ See `references/button-patterns.md` for full reference.
 ### Select Dropdown
 
 ```tsx
-<select className="w-full px-3 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+<select className="w-full rounded-md border border-border bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
   <option>Option 1</option>
   <option>Option 2</option>
 </select>
@@ -269,7 +271,7 @@ See `references/button-patterns.md` for full reference.
   <input
     id="password"
     type="password"
-    className="w-full px-3 py-2 bg-background border border-destructive rounded-md focus:outline-none focus:ring-2 focus:ring-destructive"
+    className="w-full rounded-md border border-destructive bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-destructive"
   />
   <p className="text-sm text-destructive">Password must be at least 8 characters</p>
 </div>
@@ -322,11 +324,11 @@ See `references/form-patterns.md` for complete patterns.
 ```tsx
 <ul className="space-y-2 text-muted-foreground">
   <li className="flex items-start">
-    <CheckIcon className="h-5 w-5 text-primary mr-2 mt-0.5" />
+    <CheckIcon className="mr-2 mt-0.5 h-5 w-5 text-primary" />
     <span>Feature one</span>
   </li>
   <li className="flex items-start">
-    <CheckIcon className="h-5 w-5 text-primary mr-2 mt-0.5" />
+    <CheckIcon className="mr-2 mt-0.5 h-5 w-5 text-primary" />
     <span>Feature two</span>
   </li>
 </ul>
@@ -341,23 +343,31 @@ See `references/typography-patterns.md` for complete guide.
 ### Header with Logo
 
 ```tsx
-<header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<header className="bg-background/95 sticky top-0 z-50 w-full border-b border-border backdrop-blur">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div className="flex h-16 items-center justify-between">
       <div className="flex items-center gap-8">
         {/* Logo */}
-        <a href="/" className="font-bold text-xl">Brand</a>
+        <a href="/" className="text-xl font-bold">
+          Brand
+        </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-6">
-          <a href="#" className="text-sm hover:text-primary transition-colors">Features</a>
-          <a href="#" className="text-sm hover:text-primary transition-colors">Pricing</a>
-          <a href="#" className="text-sm hover:text-primary transition-colors">About</a>
+        <nav className="hidden gap-6 md:flex">
+          <a href="#" className="text-sm transition-colors hover:text-primary">
+            Features
+          </a>
+          <a href="#" className="text-sm transition-colors hover:text-primary">
+            Pricing
+          </a>
+          <a href="#" className="text-sm transition-colors hover:text-primary">
+            About
+          </a>
         </nav>
       </div>
 
       {/* CTA */}
-      <button className="bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm">
+      <button className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground">
         Sign Up
       </button>
     </div>
@@ -368,14 +378,22 @@ See `references/typography-patterns.md` for complete guide.
 ### Footer
 
 ```tsx
-<footer className="border-t border-border bg-muted/50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+<footer className="bg-muted/50 border-t border-border">
+  <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
       <div>
-        <h4 className="font-semibold mb-4">Product</h4>
+        <h4 className="mb-4 font-semibold">Product</h4>
         <ul className="space-y-2 text-sm text-muted-foreground">
-          <li><a href="#" className="hover:text-primary">Features</a></li>
-          <li><a href="#" className="hover:text-primary">Pricing</a></li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Features
+            </a>
+          </li>
+          <li>
+            <a href="#" className="hover:text-primary">
+              Pricing
+            </a>
+          </li>
         </ul>
       </div>
       {/* More columns */}
@@ -392,14 +410,14 @@ See `references/navigation-patterns.md` for mobile menus and dropdowns.
 
 All patterns use semantic color tokens that automatically adapt:
 
-| Token | Light Mode | Dark Mode |
-|-------|------------|-----------|
-| `bg-background` | White | Dark gray |
-| `text-foreground` | Dark gray | White |
-| `bg-card` | White | Slightly lighter gray |
-| `text-muted-foreground` | Gray | Light gray |
-| `border-border` | Light gray | Dark gray |
-| `bg-primary` | Brand color | Lighter brand color |
+| Token                   | Light Mode  | Dark Mode             |
+| ----------------------- | ----------- | --------------------- |
+| `bg-background`         | White       | Dark gray             |
+| `text-foreground`       | Dark gray   | White                 |
+| `bg-card`               | White       | Slightly lighter gray |
+| `text-muted-foreground` | Gray        | Light gray            |
+| `border-border`         | Light gray  | Dark gray             |
+| `bg-primary`            | Brand color | Lighter brand color   |
 
 **Never use raw colors** like `bg-blue-500` - always use semantic tokens.
 
@@ -413,13 +431,9 @@ See `references/dark-mode-patterns.md` for theme toggle implementation.
 
 ```tsx
 <section className="py-16 sm:py-24">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-      Section Title
-    </h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {/* content */}
-    </div>
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 className="mb-12 text-center text-3xl font-bold sm:text-4xl">Section Title</h2>
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">{/* content */}</div>
   </div>
 </section>
 ```
@@ -428,8 +442,8 @@ See `references/dark-mode-patterns.md` for theme toggle implementation.
 
 ```tsx
 <div className="flex flex-col items-center justify-center text-center">
-  <h1 className="text-4xl font-bold mb-4">Centered Title</h1>
-  <p className="text-muted-foreground max-w-2xl">Centered description</p>
+  <h1 className="mb-4 text-4xl font-bold">Centered Title</h1>
+  <p className="max-w-2xl text-muted-foreground">Centered description</p>
 </div>
 ```
 

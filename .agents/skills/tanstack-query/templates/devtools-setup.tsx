@@ -1,9 +1,9 @@
 // src/main.tsx - Complete DevTools Setup
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import App from './App'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import App from './App';
 
 /**
  * QueryClient with DevTools-friendly configuration
@@ -16,7 +16,7 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
     },
   },
-})
+});
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -32,13 +32,10 @@ createRoot(document.getElementById('root')!).render(
       <ReactQueryDevtools
         // Start collapsed (default: false)
         initialIsOpen={false}
-
         // Button position on screen
         buttonPosition="bottom-right" // "top-left" | "top-right" | "bottom-left" | "bottom-right"
-
         // Panel position when open
         position="bottom" // "top" | "bottom" | "left" | "right"
-
         // Custom styles for toggle button
         toggleButtonProps={{
           style: {
@@ -46,7 +43,6 @@ createRoot(document.getElementById('root')!).render(
             marginRight: '1rem',
           },
         }}
-
         // Custom styles for panel
         panelProps={{
           style: {
@@ -59,7 +55,7 @@ createRoot(document.getElementById('root')!).render(
       />
     </QueryClientProvider>
   </StrictMode>
-)
+);
 
 /**
  * Advanced: Conditional DevTools (explicit dev check)
@@ -70,20 +66,18 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
-      {import.meta.env.DEV && (
-        <ReactQueryDevtools initialIsOpen={false} />
-      )}
+      {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>
   </StrictMode>
-)
+);
 
 /**
  * Advanced: Custom Toggle Button
  */
-import { useState } from 'react'
+import { useState } from 'react';
 
 function AppWithCustomDevTools() {
-  const [showDevTools, setShowDevTools] = useState(false)
+  const [showDevTools, setShowDevTools] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -104,7 +98,7 @@ function AppWithCustomDevTools() {
 
       {showDevTools && <ReactQueryDevtools initialIsOpen={true} />}
     </QueryClientProvider>
-  )
+  );
 }
 
 /**
@@ -136,7 +130,7 @@ function DebugQueryCaching() {
   const { data, dataUpdatedAt, isFetching } = useQuery({
     queryKey: ['todos'],
     queryFn: fetchTodos,
-  })
+  });
 
   return (
     <div>
@@ -148,7 +142,7 @@ function DebugQueryCaching() {
           - Refetch behavior
       */}
     </div>
-  )
+  );
 }
 
 // Example: Debug why query keeps refetching
@@ -160,14 +154,14 @@ function DebugRefetchingIssue() {
     staleTime: 0, // ❌ Data always stale, will refetch frequently
     refetchOnWindowFocus: true, // ❌ Refetches on every focus
     refetchOnMount: true, // ❌ Refetches on every mount
-  })
+  });
 
   // DevTools will show you:
   // - How many times query refetched
   // - When it refetched (mount, focus, reconnect)
   // - Current staleTime and gcTime settings
 
-  return <div>Fetching: {isFetching ? 'Yes' : 'No'}</div>
+  return <div>Fetching: {isFetching ? 'Yes' : 'No'}</div>;
 }
 
 /**
@@ -176,10 +170,10 @@ function DebugRefetchingIssue() {
  * For debugging production issues remotely
  * npm install @tanstack/react-query-devtools-production
  */
-import { ReactQueryDevtools as ReactQueryDevtoolsProd } from '@tanstack/react-query-devtools-production'
+import { ReactQueryDevtools as ReactQueryDevtoolsProd } from '@tanstack/react-query-devtools-production';
 
 function AppWithProductionDevTools() {
-  const [showDevTools, setShowDevTools] = useState(false)
+  const [showDevTools, setShowDevTools] = useState(false);
 
   useEffect(() => {
     // Load production devtools on demand
@@ -187,16 +181,16 @@ function AppWithProductionDevTools() {
     if (showDevTools) {
       import('@tanstack/react-query-devtools-production').then((module) => {
         // Module loaded
-      })
+      });
     }
-  }, [showDevTools])
+  }, [showDevTools]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <App />
       {showDevTools && <ReactQueryDevtoolsProd />}
     </QueryClientProvider>
-  )
+  );
 }
 
 /**
@@ -205,27 +199,27 @@ function AppWithProductionDevTools() {
  * Add custom keyboard shortcut to toggle DevTools
  */
 function AppWithKeyboardShortcut() {
-  const [showDevTools, setShowDevTools] = useState(false)
+  const [showDevTools, setShowDevTools] = useState(false);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       // Ctrl/Cmd + Shift + D
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'd') {
-        e.preventDefault()
-        setShowDevTools((prev) => !prev)
+        e.preventDefault();
+        setShowDevTools((prev) => !prev);
       }
-    }
+    };
 
-    window.addEventListener('keydown', handleKeyPress)
-    return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [])
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
       <App />
       {showDevTools && <ReactQueryDevtools />}
     </QueryClientProvider>
-  )
+  );
 }
 
 /**

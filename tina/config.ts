@@ -1,24 +1,24 @@
-import { defineConfig } from "tinacms";
+import { defineConfig } from 'tinacms';
 
 // Local mode - no auth required
 export default defineConfig({
   // Use local backend (no Tina Cloud needed)
-  branch: "main",
+  branch: 'main',
 
   // Client ID and token not needed for local dev
   clientId: null,
   token: null,
 
   build: {
-    outputFolder: "admin",
-    publicFolder: "public",
+    outputFolder: 'admin',
+    publicFolder: 'public',
   },
 
   // Media management - use public folder for local dev
   media: {
     tina: {
-      mediaRoot: "uploads",
-      publicFolder: "public",
+      mediaRoot: 'uploads',
+      publicFolder: 'public',
     },
   },
 
@@ -26,60 +26,60 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "blog",
-        label: "Blog Posts",
-        path: "src/content/blog",
-        format: "md", // or 'mdx'
+        name: 'blog',
+        label: 'Blog Posts',
+        path: 'src/content/blog',
+        format: 'md', // or 'mdx'
 
         fields: [
           {
-            type: "string",
-            name: "title",
-            label: "Title",
+            type: 'string',
+            name: 'title',
+            label: 'Title',
             isTitle: true,
             required: true,
           },
           {
-            type: "string",
-            name: "description",
-            label: "Description",
+            type: 'string',
+            name: 'description',
+            label: 'Description',
             required: true,
             ui: {
-              component: "textarea",
+              component: 'textarea',
             },
           },
           {
-            type: "datetime",
-            name: "pubDate",
-            label: "Publication Date",
+            type: 'datetime',
+            name: 'pubDate',
+            label: 'Publication Date',
             required: true,
           },
           {
-            type: "datetime",
-            name: "updatedDate",
-            label: "Updated Date",
+            type: 'datetime',
+            name: 'updatedDate',
+            label: 'Updated Date',
           },
           {
-            type: "image",
-            name: "heroImage",
-            label: "Hero Image",
+            type: 'image',
+            name: 'heroImage',
+            label: 'Hero Image',
           },
           {
-            type: "string",
-            name: "tags",
-            label: "Tags",
+            type: 'string',
+            name: 'tags',
+            label: 'Tags',
             list: true,
           },
           {
-            type: "boolean",
-            name: "draft",
-            label: "Draft",
-            description: "Hide from public",
+            type: 'boolean',
+            name: 'draft',
+            label: 'Draft',
+            description: 'Hide from public',
           },
           {
-            type: "rich-text",
-            name: "body",
-            label: "Content",
+            type: 'rich-text',
+            name: 'body',
+            label: 'Content',
             isBody: true,
           },
         ],
