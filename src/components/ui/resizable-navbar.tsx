@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '@/lib/utils';
+import { AppLogo } from '@/shared/ui/atoms/Logo/AppLogo';
 import { IconMenu2, IconX } from '@tabler/icons-react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'motion/react';
 
@@ -206,10 +207,10 @@ export const NavbarLogo = () => {
   return (
     <a
       href="/"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
+      className="relative z-20 mr-4 flex max-w-full min-w-0 items-center gap-2 overflow-hidden px-2 py-1 text-sm font-normal text-black"
     >
-      <img src="https://assets.aceternity.com/logo-dark.png" alt="logo" width={30} height={30} />
-      <span className="font-medium text-black dark:text-white">Nguyen Dang</span>
+      <AppLogo className="text-foreground size-8 shrink-0" />
+      <span className="truncate font-medium text-black dark:text-white">Nguyen Dang</span>
     </a>
   );
 };
