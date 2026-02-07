@@ -1,11 +1,10 @@
 // tina/config.ts
 import { defineConfig } from "tinacms";
 var config_default = defineConfig({
-  // Use local backend (no Tina Cloud needed)
-  branch: "main",
-  // Client ID and token not needed for local dev
-  clientId: null,
-  token: null,
+  branch: import.meta.env.PUBLIC_TINA_BRANCH || "main",
+  // Use environment variables for Tina Cloud
+  clientId: import.meta.env.PUBLIC_TINA_CLIENT_ID || null,
+  token: import.meta.env.TINA_TOKEN || null,
   build: {
     outputFolder: "admin",
     publicFolder: "public"
