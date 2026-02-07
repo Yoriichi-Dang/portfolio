@@ -6,6 +6,7 @@
     "dev": "tinacms dev -c \"astro dev\"",
     "dev:astro": "astro dev",
     "build": "tinacms build && astro build",
+    "build:prod": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky",
