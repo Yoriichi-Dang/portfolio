@@ -55,11 +55,20 @@ export default {
           border: 'var(--color-sidebar-border)',
           ring: 'var(--color-sidebar-ring)',
         },
+        neutral: {
+          100: 'var(--color-neutral-100)',
+          300: 'var(--color-neutral-300)',
+          500: 'var(--color-neutral-500)',
+          700: 'var(--color-neutral-700)',
+          800: 'var(--color-neutral-800)',
+          900: 'var(--color-neutral-900)',
+        },
       },
       borderRadius: {
         lg: 'var(--radius-lg)',
         md: 'var(--radius-md)',
         sm: 'var(--radius-sm)',
+        xl: 'var(--radius-xl)',
       },
       fontFamily: {
         sans: ['var(--font-sans)'],

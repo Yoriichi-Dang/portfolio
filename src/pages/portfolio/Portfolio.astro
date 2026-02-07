@@ -1,0 +1,13 @@
+---
+import { GridBackground } from '@/shared/ui/molecules/Background/GridBackground';
+import { PortfolioNavigation, DummyContent } from './PortfolioNavigation';
+---
+
+<div class="relative flex min-h-screen w-full">
+  <GridBackground>
+    <PortfolioNavigation client:load />
+    <div class="container mx-auto">
+      <DummyContent />
+    </div>
+  </GridBackground>
+</div>

@@ -5,10 +5,13 @@ import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import partytown from "@astrojs/partytown";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://example.com",
-  integrations: [mdx(), sitemap(), react(), partytown(), tailwind()],
+  integrations: [mdx(), sitemap(), react(), partytown()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

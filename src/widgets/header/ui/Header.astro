@@ -3,12 +3,12 @@ import { SITE_TITLE } from '@/shared/config';
 import { HeaderLink } from '@/shared/ui/atoms';
 ---
 
-<header class="sticky top-0 z-50 border-b border-border bg-card px-4 shadow-sm">
+<header class="bg-card sticky top-0 z-50 px-4 shadow-sm">
   <nav class="flex items-center justify-between">
     <h2 class="m-0 text-base">
       <a
         href="/"
-        class="px-2 py-4 font-semibold text-foreground no-underline transition-colors hover:text-primary"
+        class="text-foreground hover:text-primary px-2 py-4 font-semibold no-underline transition-colors"
       >
         {SITE_TITLE}
       </a>
@@ -22,7 +22,7 @@ import { HeaderLink } from '@/shared/ui/atoms';
       <a
         href="https://m.webtoo.ls/@astro"
         target="_blank"
-        class="text-muted-foreground transition-colors hover:text-primary"
+        class="text-muted-foreground hover:text-primary transition-colors"
       >
         <span class="sr-only">Follow Astro on Mastodon</span>
         <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
@@ -35,7 +35,7 @@ import { HeaderLink } from '@/shared/ui/atoms';
       <a
         href="https://twitter.com/astrodotbuild"
         target="_blank"
-        class="text-muted-foreground transition-colors hover:text-primary"
+        class="text-muted-foreground hover:text-primary transition-colors"
       >
         <span class="sr-only">Follow Astro on Twitter</span>
         <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
@@ -48,7 +48,7 @@ import { HeaderLink } from '@/shared/ui/atoms';
       <a
         href="https://github.com/withastro/astro"
         target="_blank"
-        class="text-muted-foreground transition-colors hover:text-primary"
+        class="text-muted-foreground hover:text-primary transition-colors"
       >
         <span class="sr-only">Go to Astro's GitHub repo</span>
         <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"

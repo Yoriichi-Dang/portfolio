@@ -1,68 +1,36 @@
 ---
 import { BaseHead } from '@/shared/ui/base';
-import { Header } from '@/widgets/header';
-import { Footer } from '@/widgets/footer';
-import { HeroSection } from '@/widgets/hero';
-import { AboutSection } from '@/widgets/about';
-import { SkillsSection } from '@/widgets/skills';
-import { ProjectsSection } from '@/features/projects';
-import { RecentPostsSection } from '@/features/blog';
-import { ContactSection } from '@/features/contact';
+import { LenisScroll } from '@/shared/ui/effects';
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/shared/config';
+import Portfolio from './portfolio/Portfolio.astro';
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  };
+  const isDark = getThemePreference() === 'dark';
+  document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+
+  if (typeof localStorage !== 'undefined') {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  }
+</script>
+<html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body class="bg-white dark:bg-gray-900">
-    <Header />
-
-    <main>
-      <!-- Hero Section - React with Framer Motion -->
-      <HeroSection client:load />
-
-      <!-- About Section - Astro (Static) -->
-      <AboutSection />
-
-      <!-- Skills Section - Astro (Static) -->
-      <SkillsSection />
-
-      <!-- Projects Section - React with animations -->
-      <ProjectsSection client:load />
-
-      <!-- Recent Blog Posts - Astro (Static) -->
-      <RecentPostsSection />
-
-      <!-- Contact Section - Astro (Static CTA) -->
-      <ContactSection />
-    </main>
-
-    <Footer />
+  <body>
+    <LenisScroll client:load>
+      <Portfolio />
+    </LenisScroll>
   </body>
 </html>
-
-<style>
-  /* Smooth scroll behavior */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-100 dark:bg-gray-800;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-gray-400 dark:bg-gray-600;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-500 dark:bg-gray-500;
-  }
-</style>

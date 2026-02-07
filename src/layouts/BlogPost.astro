@@ -14,7 +14,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 const isPublicImage = typeof heroImage === 'string';
 ---
 
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <BaseHead title={title} description={description} />
     <style>
@@ -58,7 +58,7 @@ const isPublicImage = typeof heroImage === 'string';
     </style>
   </head>
 
-  <body>
+  <body class="bg-background text-foreground">
     <Header />
     <main>
       <article>
