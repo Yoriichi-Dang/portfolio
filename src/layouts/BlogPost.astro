@@ -2,9 +2,9 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
+import { Footer } from '@/widgets/footer';
 import { FormattedDate } from '@/shared/lib/utils';
-import Header from '../components/Header.astro';
+import { Header } from '@/widgets/header';
 
 type Props = CollectionEntry<'blog'>['data'];
 
