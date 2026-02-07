@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+import { FormattedDate } from '@/shared/lib/utils';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3); // Get latest 3 posts
+---
+
+<section id="blog" class="py-20 bg-gray-50 dark:bg-gray-800">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900 dark:text-white">
+        Latest Blog Posts
+      </h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-12 text-lg">
+        Thoughts, tutorials, and insights about web development
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {posts.map((post) => {
+          const heroImage = post.data.heroImage;
+          const isPublicImage = typeof heroImage === 'string';
+          
+          return (
+            <article class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+              <a href={`/blog/${post.id}/`} class="block">
+                {heroImage && (
+                  <div class="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                    <img
+                      src={isPublicImage ? heroImage : heroImage.src}
+                      alt={post.data.title}
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                )}
+                
+                <div class="p-6">
+                  <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <FormattedDate date={post.data.pubDate} />
+                  </div>
+
+                  <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    {post.data.title}
+                  </h3>
+                  
+                  <p class="text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
+                    {post.data.description}
+                  </p>
+
+                  <div class="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium">
+                    Read more
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            </article>
+          );
+        })}
+      </div>
+
+      <div class="text-center mt-12">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 px-8 py-3 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg font-medium hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors duration-200"
+        >
+          View All Posts
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
