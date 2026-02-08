@@ -1,14 +1,12 @@
 export const profile = {
-  name: 'Đặng Nguyên',
+  name: 'Nguyen Dang',
   title: 'Full-Stack Developer • Tech Enthusiast • Problem Solver',
   bio: [
-    'Xin chào! Tôi là Đặng Nguyên, một Full-Stack Developer đam mê công nghệ và luôn tìm kiếm những thử thách mới.',
-    'Với kinh nghiệm trong việc xây dựng ứng dụng web hiện đại, tôi chuyên về React, Node.js, và TypeScript. Tôi tin vào việc viết code sạch, dễ maintain và scalable.',
-    'Khi không code, tôi thích khám phá các công nghệ mới, đọc blog tech, và chia sẻ kiến thức với cộng đồng.',
+    "I'm a full-stack engineer specializing in ReactJS, NodeJS, Golang, and Python, building AI-first products. My work focuses on AI agents, image processing pipelines, intelligent workflows, chat systems, and multi-agent orchestration architectures.",
   ],
-  location: 'Vietnam',
-  status: 'Available for work',
-  image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop',
+  location: 'Da Nang, Vietnam',
+  status: 'Available for hire',
+  image: '/avatar.jpg',
   social: {
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
