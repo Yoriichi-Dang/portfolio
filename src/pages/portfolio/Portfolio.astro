@@ -2,11 +2,13 @@
 import { GridBackground } from '@/shared/ui/molecules/Background/GridBackground';
 import { PortfolioNavigation } from './PortfolioNavigation';
 import { HeroSection } from '@/widgets/hero/ui/HeroSection';
+import { SkillsSection } from '@/widgets/skills';
 ---
 
-<div class="relative flex min-h-screen w-full">
+<div class="relative flex min-h-screen w-full overflow-x-hidden">
   <GridBackground>
     <PortfolioNavigation client:load />
     <HeroSection client:load />
+    <SkillsSection />
   </GridBackground>
 </div>

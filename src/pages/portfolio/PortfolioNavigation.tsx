@@ -36,7 +36,7 @@ export function PortfolioNavigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <Navbar>
+    <Navbar className="mx-auto w-full max-w-4xl">
       {/* Desktop Navigation */}
       <NavBody>
         <NavbarLogo />

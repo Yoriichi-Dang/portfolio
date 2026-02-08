@@ -1,44 +1,23 @@
 ---
-import { skills } from '@/entities/skill';
+import { techStacks } from '@/entities/techstack';
 ---
 
-<section id="skills" class="bg-muted py-20">
+<section id="skills" class="py-20">
   <div class="container mx-auto px-4">
     <div class="mx-auto max-w-6xl">
-      <h2 class="mb-4 text-center text-4xl font-bold text-foreground md:text-5xl">
+      <h2 class="text-foreground mb-4 text-center text-4xl font-bold md:text-5xl">
         Skills & Technologies
       </h2>
-      <p class="mb-12 text-center text-lg text-muted-foreground">
-        Technologies I work with on a daily basis
+      <p class="text-muted-foreground mb-12 text-center text-lg">
+        The skills, tools and technologies I am really working with
       </p>
 
-      <div class="grid gap-8 md:grid-cols-3">
+      <div class="grid grid-cols-3 gap-6 md:grid-cols-7" id="tech-stack-grid">
         {
-          skills.map((group) => (
-            <div class="rounded-xl border border-border bg-card p-6 shadow-lg">
-              <h3 class="mb-4 border-b-2 border-primary pb-2 text-2xl font-bold text-card-foreground">
-                {group.category}
-              </h3>
-              <ul class="space-y-3">
-                {group.items.map((skill) => (
-                  <li class="flex items-center gap-2 text-card-foreground">
-                    <svg
-                      class="h-5 w-5 flex-shrink-0 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>{skill}</span>
-                  </li>
-                ))}
-              </ul>
+          techStacks.map((tech) => (
+            <div class="border-border bg-card flex flex-col items-center justify-center gap-3 rounded-xl border p-6 shadow-lg">
+              <div class="tech-icon-wrapper size-12" data-icon-name={tech.iconName} />
+              <span class="text-foreground text-sm font-medium">{tech.name}</span>
             </div>
           ))
         }
@@ -46,3 +25,46 @@ import { skills } from '@/entities/skill';
     </div>
   </div>
 </section>
+
+<script>
+  import StackIcon from 'tech-stack-icons';
+  import { createRoot } from 'react-dom/client';
+  import { createElement } from 'react';
+
+  function renderIcons() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const variant = isDark ? 'dark' : 'light';
+
+    const wrappers = document.querySelectorAll('.tech-icon-wrapper');
+    wrappers.forEach((wrapper) => {
+      const iconName = wrapper.getAttribute('data-icon-name');
+      if (!iconName) return;
+
+      // Clear previous content
+      wrapper.innerHTML = '';
+
+      // Create React root and render icon
+      const root = createRoot(wrapper);
+      root.render(
+        createElement(StackIcon, {
+          name: iconName,
+          variant: variant,
+          className: 'size-12',
+        })
+      );
+    });
+  }
+
+  // Initial render
+  renderIcons();
+
+  // Observe theme changes
+  const observer = new MutationObserver(() => {
+    renderIcons();
+  });
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
+</script>
