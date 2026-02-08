@@ -69,19 +69,13 @@ export function PortfolioNavigation() {
             </a>
           ))}
           <div className="flex w-full flex-col gap-4">
+            <ToggleTheme className="border-border z-10 h-8 w-8 border" />
             <NavbarButton
               onClick={() => setIsMobileMenuOpen(false)}
               variant="primary"
               className="w-full"
             >
-              Login
-            </NavbarButton>
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
-            >
-              Book a call
+              Contact
             </NavbarButton>
           </div>
         </MobileNavMenu>

@@ -8,8 +8,8 @@ export const profile = {
   status: 'Available for hire',
   image: '/avatar.jpg',
   social: {
-    github: 'https://github.com',
-    linkedin: 'https://linkedin.com',
-    twitter: 'https://twitter.com',
+    github: 'https://github.com/Yoriichi-Dang',
+    linkedin: 'https://www.linkedin.com/in/dang-nguyen-22a053256/',
+    email: 'hoangnguyen241003@gmail.com',
   },
 };

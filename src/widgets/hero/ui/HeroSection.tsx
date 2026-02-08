@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion';
 import { profile } from '@/entities/profile';
 import { MapPin } from 'lucide-react';
-import { IconBrandLinkedin, IconBrandGithub, IconMail } from '@tabler/icons-react';
+import { IconBrandLinkedin, IconBrandGithub, IconMail, IconCheck } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
+import { useCopy } from '@/shared/hooks/useCopy';
 
 export const HeroSection = () => {
+  const { copied, copyToClipboard } = useCopy();
+
   return (
     <section id="hero" className="container mx-auto max-w-5xl px-4 py-32">
       <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
@@ -34,14 +37,26 @@ export const HeroSection = () => {
             </div>
           </div>
           <div className="mt-8 flex items-center gap-3">
-            <Button variant="ghost" size="icon">
+            <Button
+              onClick={() => window.open(profile.social.github, '_blank')}
+              variant="ghost"
+              size="icon"
+            >
               <IconBrandGithub size={'30'} />
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button
+              onClick={() => window.open(profile.social.linkedin, '_blank')}
+              variant="ghost"
+              size="icon"
+            >
               <IconBrandLinkedin />
             </Button>
-            <Button variant="ghost" size="icon">
-              <IconMail />
+            <Button
+              onClick={() => copyToClipboard(profile.social.email)}
+              variant="ghost"
+              size="icon"
+            >
+              {copied ? <IconCheck className="text-green-500" /> : <IconMail />}
             </Button>
           </div>
         </motion.div>
