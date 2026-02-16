@@ -55,6 +55,10 @@ export function ExperienceTimeline() {
           src: '/projects/layerproof/editor_design.png',
           alt: 'Layerproof Editor Design',
         },
+        {
+          src: '/projects/layerproof/design.png',
+          alt: 'Layerproof Design',
+        },
       ],
     },
     {
