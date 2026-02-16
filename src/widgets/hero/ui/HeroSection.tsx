@@ -10,39 +10,39 @@ export const HeroSection = () => {
   const { copied, copyToClipboard } = useCopy();
 
   return (
-    <section id="hero" className="container mx-auto max-w-6xl py-32">
-      <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+    <section id="hero" className="container mx-auto max-w-6xl px-4 py-16 sm:py-24 lg:py-32">
+      <div className="grid grid-cols-1 items-center gap-8 md:gap-12 lg:grid-cols-2">
         {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="order-2 md:order-1"
+          className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left"
         >
-          <div>
-            <h1 className="text-foreground mb-6 text-4xl font-bold md:text-5xl">
+          <div className="mb-6">
+            <h1 className="text-foreground mb-4 text-3xl font-bold sm:text-4xl md:mb-6 lg:text-5xl">
               <TypingAnimation words={[`Hi, I'm ${profile.name}`]} loop />
             </h1>
-            <p className="text-muted-foreground mb-8 text-sm md:text-base">
+            <p className="text-muted-foreground mb-6 text-base leading-relaxed sm:text-lg md:mb-8">
               {profile.bio.join(' ')}
             </p>
           </div>
-          <div className="flex flex-col items-start gap-2">
-            <div className="text-muted-foreground flex items-center gap-2">
+          <div className="mb-6 flex flex-col items-center gap-2 md:mb-8 lg:items-start">
+            <div className="text-muted-foreground flex items-center gap-2 text-sm sm:text-base">
               <MapPin className="size-4" />
               {profile.location}
             </div>
-            <div className="text-muted-foreground flex items-center gap-3">
-              <div className="bg-primary ml-1 size-2 rounded-full" />
+            <div className="text-muted-foreground flex items-center gap-3 text-sm sm:text-base">
+              <div className="bg-primary size-2 rounded-full" />
               {profile.status}
             </div>
           </div>
           {/* CTA Buttons */}
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 lg:justify-start">
             {/* Primary CTA - Preview Resume */}
             <Button
               onClick={() => window.open('/resume.pdf', '_blank')}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2 transition-colors"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 w-full gap-2 transition-colors sm:w-auto"
               size="default"
             >
               <FileText className="size-4" />
@@ -50,27 +50,34 @@ export const HeroSection = () => {
             </Button>
 
             {/* Secondary - Social Links */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-2 sm:gap-3">
               <Button
                 onClick={() => window.open(profile.social.github, '_blank')}
                 variant="ghost"
                 size="icon"
+                className="size-10 sm:size-11"
               >
-                <IconBrandGithub size={'30'} />
+                <IconBrandGithub className="size-5 sm:size-6" />
               </Button>
               <Button
                 onClick={() => window.open(profile.social.linkedin, '_blank')}
                 variant="ghost"
                 size="icon"
+                className="size-10 sm:size-11"
               >
-                <IconBrandLinkedin />
+                <IconBrandLinkedin className="size-5 sm:size-6" />
               </Button>
               <Button
                 onClick={() => copyToClipboard(profile.social.email)}
                 variant="ghost"
                 size="icon"
+                className="size-10 sm:size-11"
               >
-                {copied ? <IconCheck className="text-green-500" /> : <IconMail />}
+                {copied ? (
+                  <IconCheck className="size-5 text-green-500 sm:size-6" />
+                ) : (
+                  <IconMail className="size-5 sm:size-6" />
+                )}
               </Button>
             </div>
           </div>
@@ -81,7 +88,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="order-1 flex justify-end md:order-2"
+          className="order-1 flex justify-center lg:order-2 lg:justify-end"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -89,8 +96,8 @@ export const HeroSection = () => {
             className="relative"
           >
             {/* Stacked layers behind avatar */}
-            <div className="bg-border/30 absolute top-3 left-3 size-64 rounded-2xl md:size-80" />
-            <div className="bg-border/20 absolute top-6 left-6 size-64 rounded-2xl md:size-80" />
+            <div className="bg-border/30 absolute top-2 left-2 size-48 rounded-2xl sm:top-3 sm:left-3 sm:size-56 md:size-64 lg:size-72 xl:size-80" />
+            <div className="bg-border/20 absolute top-4 left-4 size-48 rounded-2xl sm:top-6 sm:left-6 sm:size-56 md:size-64 lg:size-72 xl:size-80" />
 
             {/* Gradient glow */}
             <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-blue-500 via-purple-500 to-pink-500 opacity-20 blur-2xl" />
@@ -99,7 +106,7 @@ export const HeroSection = () => {
             <img
               src={profile.image}
               alt={profile.name}
-              className="border-border relative size-64 rounded-2xl border-4 object-cover shadow-2xl md:size-80"
+              className="border-border relative size-48 rounded-2xl border-4 object-cover shadow-2xl sm:size-56 md:size-64 lg:size-72 xl:size-80"
             />
           </motion.div>
         </motion.div>
