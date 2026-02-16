@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { profile } from '@/entities/profile';
-import { MapPin } from 'lucide-react';
+import { MapPin, FileText } from 'lucide-react';
 import { IconBrandLinkedin, IconBrandGithub, IconMail, IconCheck } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
 import { useCopy } from '@/shared/hooks/useCopy';
@@ -10,7 +10,7 @@ export const HeroSection = () => {
   const { copied, copyToClipboard } = useCopy();
 
   return (
-    <section id="hero" className="container mx-auto max-w-5xl px-4 py-32">
+    <section id="hero" className="container mx-auto max-w-6xl py-32">
       <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
         {/* Text Content */}
         <motion.div
@@ -37,28 +37,42 @@ export const HeroSection = () => {
               {profile.status}
             </div>
           </div>
-          <div className="mt-8 flex items-center gap-3">
+          {/* CTA Buttons */}
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+            {/* Primary CTA - Preview Resume */}
             <Button
-              onClick={() => window.open(profile.social.github, '_blank')}
-              variant="ghost"
-              size="icon"
+              onClick={() => window.open('/resume.pdf', '_blank')}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2 transition-colors"
+              size="default"
             >
-              <IconBrandGithub size={'30'} />
+              <FileText className="size-4" />
+              Preview Resume
             </Button>
-            <Button
-              onClick={() => window.open(profile.social.linkedin, '_blank')}
-              variant="ghost"
-              size="icon"
-            >
-              <IconBrandLinkedin />
-            </Button>
-            <Button
-              onClick={() => copyToClipboard(profile.social.email)}
-              variant="ghost"
-              size="icon"
-            >
-              {copied ? <IconCheck className="text-green-500" /> : <IconMail />}
-            </Button>
+
+            {/* Secondary - Social Links */}
+            <div className="flex items-center gap-3">
+              <Button
+                onClick={() => window.open(profile.social.github, '_blank')}
+                variant="ghost"
+                size="icon"
+              >
+                <IconBrandGithub size={'30'} />
+              </Button>
+              <Button
+                onClick={() => window.open(profile.social.linkedin, '_blank')}
+                variant="ghost"
+                size="icon"
+              >
+                <IconBrandLinkedin />
+              </Button>
+              <Button
+                onClick={() => copyToClipboard(profile.social.email)}
+                variant="ghost"
+                size="icon"
+              >
+                {copied ? <IconCheck className="text-green-500" /> : <IconMail />}
+              </Button>
+            </div>
           </div>
         </motion.div>
 
@@ -67,7 +81,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="order-1 flex justify-center md:order-2"
+          className="order-1 flex justify-end md:order-2"
         >
           <motion.div
             whileHover={{ scale: 1.05 }}

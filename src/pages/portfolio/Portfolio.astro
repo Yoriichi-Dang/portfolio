@@ -4,13 +4,16 @@ import { PortfolioNavigation } from './PortfolioNavigation';
 import { HeroSection } from '@/widgets/hero/ui/HeroSection';
 import { SkillsSection } from '@/widgets/skills';
 import { ExperienceTimeline } from '@/widgets/timeline';
+import { EducationSection } from '@/widgets/education';
 ---
 
 <div class="relative flex min-h-screen w-full overflow-x-hidden">
   <GridBackground>
     <PortfolioNavigation client:load />
     <HeroSection client:load />
+    <EducationSection />
     <SkillsSection />
     <ExperienceTimeline client:load />
+    <!-- <ContactSection client:load /> -->
   </GridBackground>
 </div>

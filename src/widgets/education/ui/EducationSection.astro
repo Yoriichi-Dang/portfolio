@@ -1,0 +1,31 @@
+---
+import { EducationItem, type Education } from '@/features/education';
+
+const educationList: Education[] = [
+  {
+    location: 'Danang City, Vietnam',
+    period: '2021 – 2025',
+    degree: 'Bachelor of Science in Data Science & Artificial Intelligence',
+    institution: 'Danang University of Science and Technology',
+    description: [
+      'Specialized in Data Science and Artificial Intelligence with a strong focus on software engineering and applied AI systems.',
+      'Graduated with a Thesis Defense Score of 9.3 / 10, demonstrating strong analytical and problem-solving capabilities.',
+      'Thesis focused on the development of an AI legal agent utilizing LangGraph for multi-agent orchestration.',
+    ],
+  },
+];
+---
+
+<section id="education" class="pb-20">
+  <div class="container mx-auto px-4">
+    <div class="mx-auto max-w-6xl">
+      <div class="mb-12 flex items-center justify-start">
+        <h2 class="text-foreground text-4xl font-semibold md:text-5xl">Education</h2>
+      </div>
+
+      <div class="space-y-8">
+        {educationList.map((education) => <EducationItem education={education} />)}
+      </div>
+    </div>
+  </div>
+</section>

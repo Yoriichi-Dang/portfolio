@@ -44,8 +44,16 @@ export function ExperienceTimeline() {
       ],
       images: [
         {
-          src: '/layerproof.png',
+          src: '/projects/layerproof/layerproof.png',
           alt: 'Layerproof',
+        },
+        {
+          src: '/projects/layerproof/dashboard.png',
+          alt: 'Layerproof Dashboard',
+        },
+        {
+          src: '/projects/layerproof/editor_design.png',
+          alt: 'Layerproof Editor Design',
         },
       ],
     },
@@ -79,12 +87,12 @@ export function ExperienceTimeline() {
     content: <WorkTimeLineItem work={work} />,
   }));
   return (
-    <div className="relative mt-4 w-full overflow-clip">
+    <section id="experience" className="relative mt-4 w-full overflow-clip">
       <Timeline
         heading="Work Experience"
         description="I've been working on various projects for the past 2 years. Here's a timeline of my journey."
         data={data}
       />
-    </div>
+    </section>
   );
 }

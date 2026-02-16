@@ -2,10 +2,10 @@
 import { profile } from '@/entities/profile';
 ---
 
-<section id="about" class="bg-card py-20">
+<section id="about" class="bg-card pb-20">
   <div class="container mx-auto px-4">
     <div class="mx-auto max-w-4xl">
-      <h2 class="mb-12 text-center text-4xl font-bold text-foreground md:text-5xl">About Me</h2>
+      <h2 class="text-foreground mb-12 text-center text-4xl font-bold md:text-5xl">About Me</h2>
 
       <div class="grid items-center gap-12 md:grid-cols-2">
         <div>
@@ -22,9 +22,9 @@ import { profile } from '@/entities/profile';
           }
 
           <div class="flex flex-wrap gap-4 pt-4">
-            <div class="flex items-center gap-2 text-muted-foreground">
+            <div class="text-muted-foreground flex items-center gap-2">
               <svg
-                class="h-5 w-5 text-primary"
+                class="text-primary h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -43,9 +43,9 @@ import { profile } from '@/entities/profile';
               </svg>
               <span>{profile.location}</span>
             </div>
-            <div class="flex items-center gap-2 text-muted-foreground">
+            <div class="text-muted-foreground flex items-center gap-2">
               <svg
-                class="h-5 w-5 text-primary"
+                class="text-primary h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

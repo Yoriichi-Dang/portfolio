@@ -1,0 +1,40 @@
+---
+import type { Education } from '../model';
+import { IconMapPin } from '@tabler/icons-react';
+
+interface Props {
+  education: Education;
+}
+
+const { education } = Astro.props;
+---
+
+<div class="border-border relative border-l-2 pl-8">
+  <div class="bg-primary absolute top-0 -left-[9px] h-4 w-4 rounded-full"></div>
+
+  <div class="mb-6">
+    <!-- Header: Location and Period -->
+    <div class="mb-3 flex items-center justify-between">
+      <div class="text-muted-foreground flex items-center gap-2">
+        <IconMapPin className="h-4 w-4" />
+        <span class="text-sm">{education.location}</span>
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">{education.period}</span>
+    </div>
+
+    <!-- Degree -->
+    <h3 class="text-foreground mb-2 text-xl font-bold md:text-2xl">
+      {education.degree}
+    </h3>
+
+    <!-- Institution -->
+    <p class="text-muted-foreground mb-4 text-base md:text-lg">
+      {education.institution}
+    </p>
+
+    <!-- Description -->
+    <div class="text-muted-foreground space-y-2 text-sm md:text-base">
+      {education.description.map((desc) => <p>{desc}</p>)}
+    </div>
+  </div>
+</div>

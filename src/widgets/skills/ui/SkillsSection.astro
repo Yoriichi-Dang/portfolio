@@ -2,7 +2,7 @@
 import { techStacks } from '@/entities/techstack';
 ---
 
-<section id="skills" class="py-20">
+<section id="skills" class="pb-20">
   <div class="container mx-auto px-4">
     <div class="mx-auto max-w-6xl">
       <h2 class="text-foreground mb-4 text-center text-4xl font-bold md:text-5xl">
@@ -15,7 +15,7 @@ import { techStacks } from '@/entities/techstack';
       <div class="grid grid-cols-3 gap-6 md:grid-cols-7" id="tech-stack-grid">
         {
           techStacks.map((tech) => (
-            <div class="border-border bg-card flex flex-col items-center justify-center gap-3 rounded-xl border p-6 shadow-lg">
+            <div class="border-border bg-card flex flex-col items-center justify-center gap-3 rounded-xl border p-6 text-center shadow-lg">
               <div class="tech-icon-wrapper size-12" data-icon-name={tech.iconName} />
               <span class="text-foreground text-sm font-medium">{tech.name}</span>
             </div>

@@ -10,6 +10,7 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from '@/components/ui/resizable-navbar';
+import type { MouseEvent } from 'react';
 import { ToggleTheme } from '@/shared/ui/molecules/ToggleTheme/ToggleTheme';
 import { useState } from 'react';
 
@@ -17,30 +18,51 @@ export function PortfolioNavigation() {
   const navItems = [
     {
       name: 'Home ',
-      link: '/',
+      link: '#hero',
     },
     {
-      name: 'Blogs',
-      link: '/blogs',
+      name: 'Skills',
+      link: '#skills',
     },
     {
-      name: 'About',
-      link: '/about',
+      name: 'Experience',
+      link: '#experience',
     },
     {
       name: 'Projects',
-      link: '/projects',
+      link: '#projects',
+    },
+    {
+      name: 'Blog',
+      link: '#blog',
     },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleSmoothScroll = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      const navbarHeight = 100; // Navbar height + padding offset
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   return (
     <Navbar className="mx-auto w-full max-w-4xl">
       {/* Desktop Navigation */}
       <NavBody>
         <NavbarLogo />
-        <NavItems items={navItems} />
+        <NavItems items={navItems} onItemClick={handleSmoothScroll} />
         <div className="flex items-center gap-4">
           <ToggleTheme className="border-border z-10 border" />
           <NavbarButton variant="primary">Contact</NavbarButton>
@@ -62,7 +84,10 @@ export function PortfolioNavigation() {
             <a
               key={`mobile-link-${idx}`}
               href={item.link}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => {
+                handleSmoothScroll(e, item.link);
+                setIsMobileMenuOpen(false);
+              }}
               className="relative text-neutral-600 dark:text-neutral-300"
             >
               <span className="block">{item.name}</span>

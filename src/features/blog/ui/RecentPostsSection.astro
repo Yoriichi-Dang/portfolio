@@ -7,13 +7,13 @@ const posts = (await getCollection('blog'))
   .slice(0, 3); // Get latest 3 posts
 ---
 
-<section id="blog" class="bg-muted py-20">
+<section id="blog" class="bg-muted pb-20">
   <div class="container mx-auto px-4">
     <div class="mx-auto max-w-6xl">
-      <h2 class="mb-4 text-center text-4xl font-bold text-foreground md:text-5xl">
+      <h2 class="text-foreground mb-4 text-center text-4xl font-bold md:text-5xl">
         Latest Blog Posts
       </h2>
-      <p class="mb-12 text-center text-lg text-muted-foreground">
+      <p class="text-muted-foreground mb-12 text-center text-lg">
         Thoughts, tutorials, and insights about web development
       </p>
 
@@ -24,10 +24,10 @@ const posts = (await getCollection('blog'))
             const isPublicImage = typeof heroImage === 'string';
 
             return (
-              <article class="group overflow-hidden rounded-xl border border-border bg-card shadow-lg transition-all duration-300 hover:shadow-2xl">
+              <article class="group border-border bg-card overflow-hidden rounded-xl border shadow-lg transition-all duration-300 hover:shadow-2xl">
                 <a href={`/blog/${post.id}/`} class="block">
                   {heroImage && (
-                    <div class="relative h-48 overflow-hidden bg-muted">
+                    <div class="bg-muted relative h-48 overflow-hidden">
                       <img
                         src={isPublicImage ? heroImage : heroImage.src}
                         alt={post.data.title}
@@ -37,7 +37,7 @@ const posts = (await getCollection('blog'))
                   )}
 
                   <div class="p-6">
-                    <div class="mb-3 flex items-center gap-2 text-sm text-muted-foreground">
+                    <div class="text-muted-foreground mb-3 flex items-center gap-2 text-sm">
                       <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path
                           stroke-linecap="round"
@@ -49,13 +49,13 @@ const posts = (await getCollection('blog'))
                       <FormattedDate date={post.data.pubDate} />
                     </div>
 
-                    <h3 class="mb-2 line-clamp-2 text-xl font-bold text-card-foreground transition-colors group-hover:text-primary">
+                    <h3 class="text-card-foreground group-hover:text-primary mb-2 line-clamp-2 text-xl font-bold transition-colors">
                       {post.data.title}
                     </h3>
 
-                    <p class="mb-4 line-clamp-3 text-muted-foreground">{post.data.description}</p>
+                    <p class="text-muted-foreground mb-4 line-clamp-3">{post.data.description}</p>
 
-                    <div class="flex items-center gap-2 font-medium text-primary">
+                    <div class="text-primary flex items-center gap-2 font-medium">
                       Read more
                       <svg
                         class="h-4 w-4 transition-transform group-hover:translate-x-1"
@@ -82,7 +82,7 @@ const posts = (await getCollection('blog'))
       <div class="mt-12 text-center">
         <a
           href="/blog"
-          class="hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border-2 border-primary px-8 py-3 font-medium text-primary transition-colors duration-200"
+          class="hover:bg-primary/10 border-primary text-primary inline-flex items-center gap-2 rounded-lg border-2 px-8 py-3 font-medium transition-colors duration-200"
         >
           View All Posts
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
