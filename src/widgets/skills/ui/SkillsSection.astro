@@ -3,7 +3,7 @@ import { techStacks } from '@/entities/techstack';
 ---
 
 <section id="skills" class="pb-20">
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-3 sm:px-4 md:px-6">
     <div class="mx-auto max-w-6xl">
       <h2 class="text-foreground mb-4 text-center text-4xl font-bold md:text-5xl">
         Skills & Technologies
@@ -11,7 +11,6 @@ import { techStacks } from '@/entities/techstack';
       <p class="text-muted-foreground mb-12 text-center text-lg">
         The skills, tools and technologies I am really working with
       </p>
-
       <div class="grid grid-cols-3 gap-6 md:grid-cols-7" id="tech-stack-grid">
         {
           techStacks.map((tech) => (
@@ -49,7 +48,6 @@ import { techStacks } from '@/entities/techstack';
         createElement(StackIcon, {
           name: iconName,
           variant: variant,
-          className: 'size-12',
         })
       );
     });

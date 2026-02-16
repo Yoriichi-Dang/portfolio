@@ -15,13 +15,18 @@ export const techStacks: TechStack[] = [
     iconName: 'typescript',
   },
   {
-    name: 'Next.js',
-    iconName: 'nextjs',
-  },
-  {
     name: 'Tailwind CSS',
     iconName: 'tailwindcss',
   },
+  {
+    name: 'React',
+    iconName: 'react',
+  },
+  {
+    name: 'Next.js',
+    iconName: 'nextjs',
+  },
+
   {
     name: 'PostgreSQL',
     iconName: 'postgresql',
@@ -80,14 +85,12 @@ export const techStacks: TechStack[] = [
     name: 'Google Cloud',
     iconName: 'gcloud',
   },
+
   {
     name: 'Langchain',
     iconName: 'langchain',
   },
-  {
-    name: 'React',
-    iconName: 'react',
-  },
+
   {
     name: 'Expo',
     iconName: 'expo',
