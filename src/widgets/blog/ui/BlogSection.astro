@@ -1,0 +1,35 @@
+---
+import { BlogList } from '@/features/blog';
+import { SAMPLE_BLOG_POSTS } from '@/entities/blog';
+import { IconArrowRight } from '@tabler/icons-react';
+
+const posts = SAMPLE_BLOG_POSTS;
+const limit = 3;
+const showViewAll = true;
+---
+
+<section id="blog" class="pb-20">
+  <div class="container mx-auto px-4">
+    <div class="mx-auto max-w-6xl">
+      {/* Heading with View All Link */}
+      <div class="mb-12 flex items-center justify-between">
+        <h2 class="text-foreground text-2xl font-semibold md:text-3xl">Articles & publications</h2>
+
+        {
+          showViewAll && (
+            <a
+              href="/blog"
+              class="text-muted-foreground hover:text-foreground group inline-flex items-center gap-2 text-base transition-colors md:text-lg"
+            >
+              <span>View all posts</span>
+              <IconArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+            </a>
+          )
+        }
+      </div>
+
+      {/* Blog List */}
+      <BlogList posts={posts} limit={limit} />
+    </div>
+  </div>
+</section>

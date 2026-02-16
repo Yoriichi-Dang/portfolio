@@ -1,14 +1,14 @@
-import type { IconType } from '@tabler/icons-react';
+import type { LucideIcon } from 'lucide-react';
 
 export interface SocialLink {
   name: string;
-  icon: IconType;
+  icon: LucideIcon;
   link: string;
 }
 
 export interface ContactInfo {
   email: string;
-  phone: string;
+  phone?: string;
   socials: SocialLink[];
 }
 

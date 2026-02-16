@@ -1,0 +1,76 @@
+---
+import type { BlogPost } from '../model';
+import { IconArrowRight } from '@tabler/icons-react';
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="group grid grid-cols-1 gap-6 lg:grid-cols-2">
+  {/* Image Section */}
+  <a
+    href={`/blog/${post.slug}`}
+    class="relative aspect-video overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-[1.02]"
+  >
+    {/* Gradient Border Effect */}
+    <div class="border-border absolute inset-0 rounded-2xl border p-1">
+      <div class="bg-background relative h-full w-full overflow-hidden rounded-2xl">
+        <img
+          src={post.image}
+          alt={post.title}
+          class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+    </div>
+  </a>
+
+  {/* Content Section */}
+  <div class="flex flex-col items-start justify-center space-y-4">
+    <div class="flex items-center justify-between">
+      <h3
+        class="text-foreground group-hover:text-primary text-lg font-bold transition-colors md:text-xl lg:text-2xl"
+      >
+        {post.title}
+      </h3>
+    </div>
+
+    {/* Metadata */}
+    <div class="text-muted-foreground flex items-center gap-2 text-sm md:text-base">
+      <span>{post.category}</span>
+      <span>•</span>
+      <time datetime={post.date}
+        >{
+          new Date(post.date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        }</time
+      >
+    </div>
+
+    {/* Description */}
+    <p class="text-muted-foreground line-clamp-3 text-sm md:text-base">
+      {post.description}
+    </p>
+
+    {/* Read More Link */}
+    <div class="flex w-full items-center justify-end">
+      <a
+        href={`/blog/${post.slug}`}
+        class="text-foreground group-hover:text-primary inline-flex items-center gap-2 text-base font-semibold transition-colors md:text-base"
+      >
+        <div class="relative">
+          <span class="text-foreground group-hover:text-primary"> Read article </span>
+          <span
+            class="bg-primary absolute bottom-[-2px] left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full"
+          ></span>
+        </div>
+        <IconArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+      </a>
+    </div>
+  </div>
+</article>

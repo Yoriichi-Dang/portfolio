@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { IconPhone, IconCopy, IconCheck } from '@tabler/icons-react';
+import { IconCopy, IconCheck } from '@tabler/icons-react';
 import { Button } from '@/components/ui/button';
 import { useCopy } from '@/shared/hooks/useCopy';
 import { CONTACT_INFO, INITIAL_FORM_DATA, type ContactFormData } from '@/entities/contact';

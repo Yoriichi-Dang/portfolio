@@ -1,0 +1,15 @@
+---
+import { BlogItem, type BlogPost } from '@/entities/blog';
+
+interface Props {
+  posts: BlogPost[];
+  limit?: number;
+}
+
+const { posts, limit } = Astro.props;
+const displayPosts = limit ? posts.slice(0, limit) : posts;
+---
+
+<div class="space-y-12">
+  {displayPosts.map((post) => <BlogItem post={post} />)}
+</div>
