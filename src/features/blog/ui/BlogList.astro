@@ -1,8 +1,9 @@
 ---
-import { BlogItem, type BlogPost } from '@/entities/blog';
+import { BlogItem } from '@/entities/blog';
+import type { BlogPostDisplay } from '@/entities/blog';
 
 interface Props {
-  posts: BlogPost[];
+  posts: BlogPostDisplay[];
   limit?: number;
 }
 
@@ -11,5 +12,19 @@ const displayPosts = limit ? posts.slice(0, limit) : posts;
 ---
 
 <div class="space-y-12">
-  {displayPosts.map((post) => <BlogItem post={post} />)}
+  {
+    displayPosts.map((post) => (
+      <BlogItem
+        post={{
+          title: post.title,
+          description: post.description,
+          image: post.image || '/placeholder-blog.jpg',
+          date: post.date.toISOString().split('T')[0],
+          category: post.tags?.[0] || 'Blog',
+          slug: post.slug,
+          tags: post.tags,
+        }}
+      />
+    ))
+  }
 </div>

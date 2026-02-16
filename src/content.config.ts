@@ -14,6 +14,8 @@ const blog = defineCollection({
       updatedDate: z.coerce.date().optional(),
       // Support both public/ folder (string) and src/assets/ (image)
       heroImage: z.union([z.string(), image()]).optional(),
+      tags: z.array(z.string()).optional(),
+      draft: z.boolean().optional().default(false),
     }),
 });
 
