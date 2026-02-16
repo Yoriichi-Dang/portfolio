@@ -28,14 +28,6 @@ export function PortfolioNavigation() {
       name: 'Experience',
       link: '#experience',
     },
-    {
-      name: 'Projects',
-      link: '#projects',
-    },
-    {
-      name: 'Blog',
-      link: '#blog',
-    },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
