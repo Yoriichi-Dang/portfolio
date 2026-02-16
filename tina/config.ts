@@ -1,13 +1,10 @@
-/* eslint-disable no-undef */
 import { defineConfig } from 'tinacms';
 
 // TinaCMS Cloud mode - runs in Node.js, use process.env
 export default defineConfig({
-  branch: process.env.PUBLIC_TINA_BRANCH || 'main',
-
-  // Use environment variables for Tina Cloud (from .env file)
-  clientId: process.env.PUBLIC_TINA_CLIENT_ID || null,
-  token: process.env.TINA_TOKEN || null,
+  branch: 'feat/implement-projects',
+  clientId: '59dace28-4c42-4aa8-b07c-d7f053ac0363',
+  token: '121820824c75191335950e45b196668861001f94',
 
   build: {
     outputFolder: 'admin',
