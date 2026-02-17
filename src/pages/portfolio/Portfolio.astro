@@ -5,6 +5,8 @@ import { HeroSection } from '@/widgets/hero/ui/HeroSection';
 import { SkillsSection } from '@/widgets/skills';
 import { ExperienceTimeline } from '@/widgets/timeline';
 import { EducationSection } from '@/widgets/education';
+import { BlogSection } from '@/widgets/blog';
+import { ContactSection } from '@/widgets/contact';
 ---
 
 <div class="relative flex min-h-screen w-full overflow-x-hidden">
@@ -14,7 +16,7 @@ import { EducationSection } from '@/widgets/education';
     <EducationSection />
     <SkillsSection />
     <ExperienceTimeline client:load />
-    <!-- <BlogSection /> -->
-    <!-- <ContactSection client:load /> -->
+    <BlogSection />
+    <ContactSection client:load />
   </GridBackground>
 </div>
