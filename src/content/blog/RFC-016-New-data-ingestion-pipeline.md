@@ -3,6 +3,7 @@ title: '[RFC-016] New data ingestion pipeline'
 description: New data ingestion pipeline
 pubDate: 2026-02-17T14:32:58.766Z
 updatedDate: 2026-02-18T14:33:12.990Z
+heroImage: /uploads/editor_design.png
 ---
 
 | Authors | @Hoai Tran        |
