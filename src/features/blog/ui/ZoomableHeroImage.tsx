@@ -43,7 +43,7 @@ export function ZoomableHeroImage({
         type="button"
         onClick={() => setIsOpen(true)}
         whileTap={{ scale: 0.99 }}
-        className="group mx-auto mb-6 flex aspect-4/3 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-md bg-gray-100 dark:bg-gray-800"
+        className="group mx-auto mb-6 flex w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-md bg-gray-100 dark:bg-gray-800"
         aria-label="Open image preview"
       >
         <motion.img
@@ -53,7 +53,7 @@ export function ZoomableHeroImage({
           width={width}
           height={height}
           loading="lazy"
-          className="block h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          className="block h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
         />
       </motion.button>
 
