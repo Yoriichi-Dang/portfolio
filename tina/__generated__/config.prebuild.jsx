@@ -1,10 +1,9 @@
 // tina/config.ts
 import { defineConfig } from "tinacms";
 var config_default = defineConfig({
-  branch: process.env.PUBLIC_TINA_BRANCH || "main",
-  // Use environment variables for Tina Cloud (from .env file)
-  clientId: process.env.PUBLIC_TINA_CLIENT_ID || null,
-  token: process.env.TINA_TOKEN || null,
+  branch: "develop",
+  clientId: process.env.PUBLIC_TINA_CLIENT_ID,
+  token: process.env.TINA_TOKEN,
   build: {
     outputFolder: "admin",
     publicFolder: "public"

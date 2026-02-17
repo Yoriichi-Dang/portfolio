@@ -1,9 +1,20 @@
 ---
 import { BlogList } from '@/features/blog';
-import { SAMPLE_BLOG_POSTS } from '@/entities/blog';
+import { getCollection } from 'astro:content';
+import { toBlogPostDisplay } from '@/entities/blog';
 import { IconArrowRight } from '@tabler/icons-react';
 
-const posts = SAMPLE_BLOG_POSTS;
+// Fetch real blog posts from content collection
+const allPosts = await getCollection('blog');
+
+// Filter out drafts and sort by date
+const publishedPosts = allPosts
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Convert to display format
+const posts = publishedPosts.map(toBlogPostDisplay);
+
 const limit = 3;
 const showViewAll = true;
 ---
