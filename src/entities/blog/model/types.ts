@@ -6,4 +6,7 @@ export interface BlogPost {
   category: string;
   slug: string;
   tags?: string[];
+  author?: string;
+  authorAvatar?: string;
+  readTime?: string;
 }
