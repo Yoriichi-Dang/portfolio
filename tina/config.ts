@@ -2,7 +2,7 @@ import { defineConfig } from 'tinacms';
 
 // TinaCMS Cloud mode - runs in Node.js, use process.env
 export default defineConfig({
-  branch: 'develop' as string,
+  branch: 'develop',
   clientId: process.env.PUBLIC_TINA_CLIENT_ID,
   token: process.env.TINA_TOKEN,
 
