@@ -15,16 +15,16 @@ const publishedPosts = allPosts
 // Convert to display format
 const posts = publishedPosts.map(toBlogPostDisplay);
 
-const limit = 3;
+const limit = 4;
 const showViewAll = true;
 ---
 
 <section id="blog" class="pb-40">
   <div class="container mx-auto px-4">
-    <div class="mx-auto max-w-6xl">
+    <div class="mx-auto max-w-7xl">
       {/* Heading with View All Link */}
       <div class="mb-12 flex items-center justify-between">
-        <h2 class="text-foreground text-2xl font-semibold md:text-3xl">Articles & publications</h2>
+        <h2 class="text-foreground text-2xl font-semibold md:text-3xl">Latest Blog Posts</h2>
 
         {
           showViewAll && (

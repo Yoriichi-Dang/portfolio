@@ -7,10 +7,9 @@ import { IconBrandGithub } from '@tabler/icons-react';
 import { ArrowUpRight } from 'lucide-react';
 type ProjectCardProps = {
   project: Project;
-  index: number;
 };
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const projectDetailPath = `/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`;
 
@@ -23,19 +22,24 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+    <div
+      role="button"
+      tabIndex={0}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleCardClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleCardClick();
+        }
+      }}
       className="group border-border bg-card relative flex h-full cursor-pointer flex-col justify-between overflow-hidden rounded-md border shadow-lg transition-all duration-300 hover:shadow-2xl"
+      aria-label={`View details for ${project.title}`}
     >
       {/* Image */}
       <div className="h-full w-full">
-        <div className="bg-muted relative h-48 overflow-hidden">
+        <div className="bg-muted relative h-58 overflow-hidden">
           <motion.img
             src={project.image}
             alt={project.title}
@@ -91,6 +95,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </Button>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }
