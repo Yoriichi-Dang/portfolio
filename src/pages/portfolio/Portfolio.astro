@@ -7,6 +7,7 @@ import { ExperienceTimeline } from '@/widgets/timeline';
 import { EducationSection } from '@/widgets/education';
 import { BlogSection } from '@/widgets/blog';
 import { ContactSection } from '@/widgets/contact';
+import { ProjectsSection } from '@/widgets/project';
 ---
 
 <div class="relative flex min-h-screen w-full overflow-x-hidden">
@@ -16,6 +17,7 @@ import { ContactSection } from '@/widgets/contact';
     <EducationSection />
     <SkillsSection />
     <ExperienceTimeline client:load />
+    <ProjectsSection />
     <BlogSection />
     <ContactSection client:load />
   </GridBackground>

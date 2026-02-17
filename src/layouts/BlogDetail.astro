@@ -5,6 +5,7 @@ import { FormattedDate } from '@/shared/lib/utils';
 import { GridBackground } from '@/shared/ui/molecules/Background/GridBackground';
 import { PortfolioNavigation } from '@/pages/portfolio/PortfolioNavigation';
 import { ZoomableHeroImage } from '@/features/blog/ui/ZoomableHeroImage';
+
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
