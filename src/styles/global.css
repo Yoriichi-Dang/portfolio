@@ -237,3 +237,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.prose table {
+  width: 100%;
+  overflow-x: auto;
+}

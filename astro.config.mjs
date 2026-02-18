@@ -13,6 +13,8 @@ import rehypeKatex from 'rehype-katex';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import mermaid from 'astro-mermaid';
+import expressiveCode from 'astro-expressive-code';
+import { getLanguageLabel } from './src/shared/lib/utils/code-language-labels';
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,6 +30,19 @@ export default defineConfig({
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeKatex],
   },
   integrations: [
+    expressiveCode({
+      plugins: [
+        {
+          name: 'ShowLanguageTitle',
+          hooks: {
+            preprocessCode: ({ codeBlock }) => {
+              if (codeBlock.props.title || codeBlock.props.frame === 'none') return;
+              codeBlock.props.title = getLanguageLabel(codeBlock.language);
+            },
+          },
+        },
+      ],
+    }),
     mdx(),
     sitemap(),
     react(),
